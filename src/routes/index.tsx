@@ -870,19 +870,17 @@ function Founder() {
 
 function FooterCTA() {
   return (
-    <section id="contact" className="py-32 md:py-44 text-center relative overflow-hidden">
+    <section id="contact" className="py-10 text-center relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6">
         <div className="gold-rule" />
       </div>
       <div className="mx-auto max-w-3xl px-6">
-        <Eyebrow>Begin</Eyebrow>
         <h2 className="font-serif text-[48px] leading-[1.05] mt-6 text-[var(--cream)]">
           Ready to scale your portfolio
           <span className="block italic text-[var(--gold)]">with intent?</span>
         </h2>
-        <p className="mt-8 text-[14px] text-[var(--cream)]/75 leading-relaxed">
-          Book a free 30-minute Qualifying Call. We'll assess fit, answer your questions, and walk
-          you through how the Blueprint engagement works.
+        <p className="mt-8 text-[14px] text-[var(--cream)]/75 leading-relaxed max-w-lg mx-auto">
+          Book a free 30-minute Qualifying Call. We'll assess fit, answer your questions, and walk you through how the Blueprint engagement works.
         </p>
         <div className="mt-12 flex justify-center">
           <CTAButton />
