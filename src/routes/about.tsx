@@ -181,7 +181,7 @@ function AboutPage() {
               <div className="space-y-4">
                 <Eyebrow>OUR METHODOLOGY</Eyebrow>
                 <h2 className="font-serif text-[36px] md:text-[42px] leading-[1.1] text-stone-900 font-light">
-                  Strategy first. <br className="hidden lg:block"/>
+                  Strategy first. <br className="hidden lg:block" />
                   <span className="italic text-[var(--gold)]">Then acquisition.</span>
                 </h2>
                 <div className="w-16 h-[1px] bg-[var(--gold)]/30 mt-6" />
@@ -190,26 +190,30 @@ function AboutPage() {
               <div className="space-y-6">
                 <Reveal delay={0.1}>
                   <p className="text-[15px] sm:text-[16px] text-stone-700 leading-relaxed font-light">
-                    Every Elevare engagement starts with a Portfolio Blueprint — a documented strategy
-                    that defines what you're building, your borrowing capacity, your suburb shortlist,
-                    your stage plan, your risk profile, and your 90-day action map. The Blueprint isn't
-                    optional. It's the foundation of every property we buy together.
+                    Every Elevare engagement starts with a Portfolio Blueprint — a documented
+                    strategy that defines what you're building, your borrowing capacity, your suburb
+                    shortlist, your stage plan, your risk profile, and your 90-day action map. The
+                    Blueprint isn't optional. It's the foundation of every property we buy together.
                   </p>
                 </Reveal>
 
                 <Reveal delay={0.25}>
                   <p className="text-[15px] sm:text-[16px] text-stone-700 leading-relaxed font-light">
-                    Once the Blueprint is built, we execute. The same team that wrote your strategy runs
-                    the search, the due diligence, the negotiation, and the contract. Finance is
-                    structured in parallel through Mortgage Only — our specialist investor finance arm.
-                    Settlement is the start of the next plan revision, not the end of the relationship.
+                    Once the Blueprint is built, we execute. The same team that wrote your strategy
+                    runs the search, the due diligence, the negotiation, and the contract. Finance
+                    is structured in parallel through Mortgage Only — our specialist investor
+                    finance arm. Settlement is the start of the next plan revision, not the end of
+                    the relationship.
                   </p>
                 </Reveal>
               </div>
             </div>
 
             {/* Right Image Block */}
-            <Reveal delay={0.3} className="relative aspect-[4/5] md:aspect-[4/4] lg:aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl">
+            <Reveal
+              delay={0.3}
+              className="relative aspect-[4/5] md:aspect-[4/4] lg:aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl"
+            >
               <div className="absolute -top-4 -right-4 w-24 h-24 border-t-8 border-r-8 border-[#2596be] rounded-tr-3xl z-0" />
               <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-8 border-l-8 border-[#f59e0b] rounded-bl-3xl z-0" />
               <img
@@ -217,7 +221,8 @@ function AboutPage() {
                 alt="Elevare Methodology Strategy Execution"
                 className="w-full h-full object-cover scale-105"
                 onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
+                  e.currentTarget.src =
+                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
                 }}
               />
               <div className="absolute inset-0 bg-stone-900/10 pointer-events-none" />

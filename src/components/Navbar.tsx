@@ -38,19 +38,19 @@ export function Navbar() {
           <Link to="/blueprint" className="hover:text-[var(--gold)] transition-colors">
             Blueprint
           </Link>
-          <a href="/#process" className="hover:text-[var(--gold)] transition-colors">
+          <Link to="/process" className="hover:text-[var(--gold)] transition-colors">
             Process
-          </a>
+          </Link>
           <Link to="/about" className="hover:text-[var(--gold)] transition-colors">
             About
           </Link>
         </nav>
-        <a
-          href="/#contact"
+        <Link
+          to="/booking"
           className="hidden md:inline-block text-xs tracking-[0.2em] uppercase bg-[var(--gold)] text-[var(--navy-deep)] px-5 py-2.5 hover:bg-[var(--gold-soft)] transition-colors font-medium"
         >
           Qualifying Call
-        </a>
+        </Link>
       </div>
     </header>
   );
