@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 const heroImg = "/assets/hero-architecture.png";
 const founderImg = "/assets/founder-portrait.png";
 const blueprintImg = "/assets/blueprint-abstract.png";
@@ -10,6 +11,8 @@ const property1 = "/assets/property-1.png";
 const property2 = "/assets/property-2.png";
 const property3 = "/assets/property-3.png";
 const property4 = "/assets/property-4.png";
+const logo = "/assets/logo.png";
+const differentiator = "/assets/differentiator.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -90,7 +93,6 @@ function SectionDivider() {
   );
 }
 
-
 function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -137,7 +139,6 @@ function Hero() {
             alt="Elevare luxury architecture background"
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
-            referrerPolicy="no-referrer"
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -273,11 +274,10 @@ function Differentiator() {
         <Reveal className="lg:col-span-5 relative group">
           <div className="relative w-full">
             <motion.img
-              src="/assets/differentiator.png"
+              src={differentiator}
               alt="Elevare Blueprint & Portfolio Architecture sketch"
               className="w-full h-auto"
               loading="lazy"
-              referrerPolicy="no-referrer"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
             />
@@ -323,12 +323,7 @@ function Blueprint() {
       className="relative py-28 md:py-40 bg-[var(--navy-deep)] overflow-hidden"
     >
       <div className="absolute inset-0 opacity-20">
-        <img
-          src={blueprintImg}
-          alt=""
-          className="w-full h-full object-cover object-center"
-          referrerPolicy="no-referrer"
-        />
+        <img src={blueprintImg} alt="" className="w-full h-full object-cover object-center" />
       </div>
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -569,7 +564,6 @@ function Audience() {
                   src={property4}
                   alt="Modern interior architecture vertical view"
                   className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </motion.div>
@@ -615,7 +609,6 @@ function Audience() {
                   src={property1}
                   alt="Modern skyscraper exterior"
                   className="w-full h-[220px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </motion.div>
@@ -632,7 +625,6 @@ function Audience() {
                   src={property3}
                   alt="Elegant interior lounge with wooden ceiling arches"
                   className="w-full h-[220px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </motion.div>
@@ -688,10 +680,9 @@ function Audience() {
                   {/* Central company logo image */}
                   <div className="absolute inset-x-0 inset-y-0 flex items-center justify-center p-1">
                     <img
-                      src="/assets/logo.png"
+                      src={logo}
                       alt="Elevare Portfolio logo"
                       className="w-8 h-8 object-contain rounded-full shadow-sm"
-                      referrerPolicy="no-referrer"
                     />
                   </div>
                 </div>
@@ -738,7 +729,6 @@ function Ecosystem() {
           src={property1}
           alt="Abstract architectural background"
           className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
         />
         {/* Blue Overlay */}
         <div className="absolute inset-0 bg-[#001c3a]/85" />
@@ -822,7 +812,6 @@ function Founder() {
               alt="Tarun Sanghi, Founder of Elevare Portfolio"
               className="w-full h-full object-cover"
               loading="lazy"
-              referrerPolicy="no-referrer"
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
             />
@@ -886,12 +875,7 @@ function SiteFooter() {
           {/* Logo/Name */}
           <div className="md:col-span-2 space-y-6">
             <div className="font-serif text-xl text-[var(--cream)] flex items-center gap-2">
-              <img
-                src="/assets/logo.png"
-                alt="Elevare logo"
-                className="w-[40px] h-[73px] object-contain"
-                referrerPolicy="no-referrer"
-              />
+              <img src={logo} alt="Elevare logo" className="w-[40px] h-[73px] object-contain" />
               <span>
                 Elevare Portfolio<span className="text-[var(--gold)]">.</span>
               </span>

@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Elevare Portfolio",
+  "description": "Strategy-led buyers agency for investors building and scaling property portfolios. Every acquisition driven by your Portfolio Blueprint.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

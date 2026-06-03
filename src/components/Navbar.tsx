@@ -29,7 +29,6 @@ export function Navbar() {
             src="/assets/logo.png"
             alt="Elevare logo"
             className="w-[40px] h-[40px] object-contain"
-            referrerPolicy="no-referrer"
           />
           <span>
             Elevare Portfolio<span className="text-[var(--gold)]">.</span>
