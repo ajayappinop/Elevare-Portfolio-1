@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Elevare Portfolio
 
-# Run and deploy your AI Studio app
+Strategy-led buyers agency marketing site (React + Vite + TanStack Router).
 
-This contains everything you need to run your app locally.
+## Requirements
 
-View your app in AI Studio: https://ai.studio/apps/3009b71c-fd59-4e6c-9619-de956cc42334
+- **Node.js 20+** (tested with v20.19.x on staging)
 
-## Run Locally
+## Run locally
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+Open http://localhost:3000
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Production build (staging / VPS)
+
+```bash
+npm install
+npm run build
+```
+
+Static output is in `dist/`. Serve with any static file server (nginx, Caddy, etc.). For client-side routes, use a fallback to `index.html`:
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+## Preview production build
+
+```bash
+npm run preview
+```
