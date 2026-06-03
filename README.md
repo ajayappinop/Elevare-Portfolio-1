@@ -17,6 +17,12 @@ Open http://localhost:3000
 
 ## Production build (staging / VPS)
 
+Stop any running dev/build processes first (avoids `ETXTBSY` on esbuild):
+
+```bash
+pkill -f "vite|Elevare-Portfolio" 2>/dev/null || true
+```
+
 Use the lockfile (fewer registry requests, more reliable on slow VPS networks):
 
 ```bash
@@ -26,12 +32,18 @@ npm run install:ci
 npm run build
 ```
 
-If build crashes with `Bus error`, rebuild native modules on the server (must install on Linux, not copy `node_modules` from Windows):
+If `npm install` fails with **`ETXTBSY`** (esbuild text file busy):
 
 ```bash
+pkill -f "vite|node.*Elevare" 2>/dev/null || true
 rm -rf node_modules
 npm run install:ci
-npm rebuild @tailwindcss/oxide esbuild
+```
+
+If build crashes with **`Bus error`**, rebuild Tailwind Oxide only (do not rebuild esbuild during install):
+
+```bash
+npm run rebuild:native
 npm run build
 ```
 
