@@ -919,12 +919,6 @@ function BlueprintPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-[var(--gold)]/15 py-12 bg-[var(--navy-deep)]">
-        <div className="mx-auto max-w-6xl px-6 text-center text-xs text-[var(--cream)]/40 font-mono tracking-wider">
-          © {new Date().getFullYear()} Elevare Portfolio. Registered in Australia.
-        </div>
-      </footer>
     </main>
   );
 }
