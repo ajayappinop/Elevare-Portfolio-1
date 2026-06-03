@@ -16,5 +16,13 @@ export default defineConfig(() => {
       host: "0.0.0.0",
       port: 3000,
     },
+    build: {
+      sourcemap: false,
+      target: "es2020",
+      cssMinify: true,
+      rollupOptions: {
+        maxParallelFileOps: 2,
+      },
+    },
   };
 });

@@ -21,7 +21,17 @@ Use the lockfile (fewer registry requests, more reliable on slow VPS networks):
 
 ```bash
 git pull
+rm -rf node_modules
 npm run install:ci
+npm run build
+```
+
+If build crashes with `Bus error`, rebuild native modules on the server (must install on Linux, not copy `node_modules` from Windows):
+
+```bash
+rm -rf node_modules
+npm run install:ci
+npm rebuild @tailwindcss/oxide esbuild
 npm run build
 ```
 
