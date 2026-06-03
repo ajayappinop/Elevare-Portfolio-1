@@ -17,9 +17,33 @@ Open http://localhost:3000
 
 ## Production build (staging / VPS)
 
+Use the lockfile (fewer registry requests, more reliable on slow VPS networks):
+
 ```bash
-npm install
+git pull
+npm run install:ci
 npm run build
+```
+
+If `npm run install:ci` fails with `ECONNRESET`, retry (the project `.npmrc` enables 5 fetch retries):
+
+```bash
+npm run install:ci
+```
+
+Or install with plain npm (also uses `.npmrc` retries):
+
+```bash
+npm install --no-audit --no-fund
+npm run build
+```
+
+Clear a broken partial install before retrying:
+
+```bash
+rm -rf node_modules
+npm cache clean --force
+npm run install:ci
 ```
 
 Static output is in `dist/`. Serve with any static file server (nginx, Caddy, etc.). For client-side routes, use a fallback to `index.html`:
