@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Navbar } from "@/components/Navbar";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -89,45 +90,6 @@ function SectionDivider() {
   );
 }
 
-function Nav() {
-  return (
-    <header className="absolute top-0 inset-x-0 z-20">
-      <div className="mx-auto max-w-6xl px-6 py-6 flex items-center justify-between">
-        <a
-          href="#"
-          className="font-serif text-xl tracking-wide text-[var(--cream)] flex items-center gap-2"
-        >
-          <img
-            src="/assets/logo.png"
-            alt="Elevare logo"
-            className="w-[40px] h-[40px] object-contain"
-            referrerPolicy="no-referrer"
-          />
-          <span>
-            Elevare Portfolio<span className="text-[var(--gold)]">.</span>
-          </span>
-        </a>
-        <nav className="hidden md:flex items-center gap-10 text-xs tracking-[0.25em] uppercase text-[var(--cream)]/80">
-          <a href="#blueprint" className="hover:text-[var(--gold)] transition-colors">
-            Blueprint
-          </a>
-          <a href="#process" className="hover:text-[var(--gold)] transition-colors">
-            Process
-          </a>
-          <a href="#founder" className="hover:text-[var(--gold)] transition-colors">
-            About
-          </a>
-        </nav>
-        <a
-          href="#contact"
-          className="hidden md:inline-block text-xs tracking-[0.2em] uppercase bg-[var(--gold)] text-[var(--navy-deep)] px-5 py-2.5 hover:bg-[var(--gold-soft)] transition-colors font-medium"
-        >
-          Qualifying Call
-        </a>
-      </div>
-    </header>
-  );
-}
 
 function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -467,14 +429,19 @@ function Process() {
   ];
 
   return (
-    <section id="process" className="py-28 md:py-40 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10 relative overflow-hidden">
+    <section
+      id="process"
+      className="py-28 md:py-40 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10 relative overflow-hidden"
+    >
       {/* Background drafting circle accent */}
-      <div className="absolute right-0 top-1/4 w-[400px] h-[400px] rounded-full border border-[var(--gold)]/5 pointer-events-none -mr-48 animate-pulse" style={{ animationDuration: "12s" }} />
+      <div
+        className="absolute right-0 top-1/4 w-[400px] h-[400px] rounded-full border border-[var(--gold)]/5 pointer-events-none -mr-48 animate-pulse"
+        style={{ animationDuration: "12s" }}
+      />
       <div className="absolute left-10 bottom-10 w-[200px] h-[200px] rounded-full border border-[var(--gold)]/5 pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
-          
           {/* Left Column: Sticky Section Headings */}
           <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
             <div>
@@ -483,24 +450,31 @@ function Process() {
                 From strategy to <span className="italic text-[var(--gold)]">scale.</span>
               </h2>
               <p className="mt-6 text-sm text-[var(--cream)]/60 leading-relaxed font-light">
-                Our three-stage methodology takes you from tactical accumulation to modern institutional performance. 
-                We don't search for properties until we've engineered your portfolio's complete financial architecture.
+                Our three-stage methodology takes you from tactical accumulation to modern
+                institutional performance. We don't search for properties until we've engineered
+                your portfolio's complete financial architecture.
               </p>
             </div>
 
             {/* Interactive Timeline Indicators for Desktop */}
             <div className="hidden lg:block space-y-4 pt-6 border-t border-[var(--gold)]/10">
               {steps.map((s, idx) => (
-                <div 
-                  key={s.n} 
+                <div
+                  key={s.n}
                   className="flex items-center gap-4 transition-all duration-300"
                   style={{ opacity: hoveredIdx === null || hoveredIdx === idx ? 1 : 0.4 }}
                 >
-                  <span className={`font-mono text-xs ${hoveredIdx === idx ? "text-[var(--gold)] font-bold" : "text-[var(--cream)]/45"}`}>
+                  <span
+                    className={`font-mono text-xs ${hoveredIdx === idx ? "text-[var(--gold)] font-bold" : "text-[var(--cream)]/45"}`}
+                  >
                     {s.n}
                   </span>
-                  <div className={`h-[1px] transition-all duration-300 ${hoveredIdx === idx ? "w-8 bg-[var(--gold)]" : "w-4 bg-[var(--cream)]/20"}`} />
-                  <span className={`text-[11px] tracking-widest uppercase transition-colors duration-300 ${hoveredIdx === idx ? "text-[var(--cream)] font-semibold" : "text-[var(--cream)]/45"}`}>
+                  <div
+                    className={`h-[1px] transition-all duration-300 ${hoveredIdx === idx ? "w-8 bg-[var(--gold)]" : "w-4 bg-[var(--cream)]/20"}`}
+                  />
+                  <span
+                    className={`text-[11px] tracking-widest uppercase transition-colors duration-300 ${hoveredIdx === idx ? "text-[var(--cream)] font-semibold" : "text-[var(--cream)]/45"}`}
+                  >
                     {s.title}
                   </span>
                 </div>
@@ -536,13 +510,16 @@ function Process() {
                 >
                   {/* Timeline Node Point */}
                   <div className="absolute left-[-16px] -translate-x-1/2 md:left-[-32px] md:-translate-x-1/2 top-3 w-3 h-3 rounded-full bg-[var(--gold)] border border-[var(--navy-deep)] flex items-center justify-center transition-all duration-300 group-hover:scale-120 group-hover:bg-[var(--cream)] z-10">
-                    <div className="absolute w-[20px] h-[20px] rounded-full border border-[var(--gold)]/0 group-hover:border-[var(--gold)]/40 animate-ping opacity-0 group-hover:opacity-100 transition-opacity" style={{ animationDuration: "1.5s" }} />
+                    <div
+                      className="absolute w-[20px] h-[20px] rounded-full border border-[var(--gold)]/0 group-hover:border-[var(--gold)]/40 animate-ping opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ animationDuration: "1.5s" }}
+                    />
                   </div>
 
                   <div className="bg-[var(--navy)]/35 border border-[var(--cream)]/5 p-8 md:p-10 rounded-sm hover:border-[var(--gold)]/20 transition-all duration-300 shadow-xl relative overflow-hidden backdrop-blur-sm">
                     {/* Corner golden accent that shows on hover */}
                     <div className="absolute top-0 right-0 w-0 h-0 border-t-[8px] border-r-[8px] border-t-transparent border-r-transparent group-hover:border-t-[var(--gold)]/40 group-hover:border-r-[var(--gold)]/40 transition-all duration-300" />
-                    
+
                     <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-6">
                       <div className="flex items-center gap-4">
                         <span className="font-mono text-xs tracking-widest text-[var(--gold)] uppercase bg-[var(--gold)]/5 px-2.5 py-1 rounded-sm border border-[var(--gold)]/15 font-bold">
@@ -557,7 +534,7 @@ function Process() {
                     <h3 className="font-serif text-[24px] text-[var(--cream)] mb-4 tracking-tight group-hover:text-[var(--gold)] transition-colors duration-350">
                       {s.title}
                     </h3>
-                    
+
                     <p className="text-[var(--cream)]/70 leading-relaxed text-[13.5px] font-light max-w-2xl">
                       {s.body}
                     </p>
@@ -566,7 +543,6 @@ function Process() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -578,10 +554,8 @@ function Audience() {
     <section className="py-24 md:py-32 bg-[var(--cream)] text-[var(--navy-deep)] overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
           {/* Left Column: Asymmetrical Collage */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4 md:gap-6 relative">
-            
             {/* Tall Vertical Column (Left) */}
             <div className="pt-16 md:pt-20 select-none">
               <motion.div
@@ -612,7 +586,10 @@ function Audience() {
                 className="bg-[var(--gold)] text-[var(--navy-deep)] p-3 rounded-sm shadow-md flex items-center gap-4 group hover:bg-[var(--gold-soft)] transition-colors duration-300"
               >
                 <div className="w-10 h-10 rounded-full bg-[var(--navy-deep)]/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-[var(--navy-deep)] fill-[var(--navy-deep)]" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 h-5 text-[var(--navy-deep)] fill-[var(--navy-deep)]"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.79.6 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.6 3.79 1 1 0 01-.27 1.11l-2.2 2.2z" />
                   </svg>
                 </div>
@@ -660,7 +637,6 @@ function Audience() {
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               </motion.div>
             </div>
-
           </div>
 
           {/* Right Column: About Us Copy + Interactive list */}
@@ -678,19 +654,26 @@ function Audience() {
                   portfolio ambition.
                 </h2>
                 <p className="text-[14px] leading-relaxed text-[var(--navy-deep)]/75 mt-4 max-w-xl">
-                  Elevare is for serious investors — first-time buyers ready to plan beyond one property, mid-portfolio investors who have hit a structural wall, and high-net-worth professionals scaling to a multi-million dollar portfolio. If you are buying property without a documented plan, you are not investing — you are accumulating.
+                  Elevare is for serious investors — first-time buyers ready to plan beyond one
+                  property, mid-portfolio investors who have hit a structural wall, and
+                  high-net-worth professionals scaling to a multi-million dollar portfolio. If you
+                  are buying property without a documented plan, you are not investing — you are
+                  accumulating.
                 </p>
               </div>
             </Reveal>
 
             {/* Stamp + Diamond Bullets Row */}
             <div className="pt-4 flex flex-col sm:flex-row items-center gap-8 md:gap-10">
-              
               {/* Badge Group */}
               <div className="flex items-center justify-center shrink-0 bg-[#001c3a] p-4 rounded-xl border border-[var(--gold)]/20 shadow-md">
                 {/* Vintage Circular Text Path Badge */}
                 <div className="relative w-20 h-20 shrink-0">
-                  <svg viewBox="0 0 100 100" className="w-full h-full select-none animate-[spin_20s_linear_infinite] origin-center" style={{ transformOrigin: "center" }}>
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="w-full h-full select-none animate-[spin_20s_linear_infinite] origin-center"
+                    style={{ transformOrigin: "center" }}
+                  >
                     <path
                       id="stampTextPath"
                       d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
@@ -720,23 +703,26 @@ function Audience() {
               {/* Core Features Diamonds list */}
               <ul className="space-y-3.5 text-left text-[14px] text-[var(--navy-deep)]/85 font-medium tracking-tight">
                 <li className="flex items-center gap-3">
-                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">◆</span>
+                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">
+                    ◆
+                  </span>
                   <span>Trusted Market Expertise</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">◆</span>
+                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">
+                    ◆
+                  </span>
                   <span>Regional Market Knowledge</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">◆</span>
+                  <span className="text-[var(--gold)] font-semibold text-xs animate-pulse select-none">
+                    ◆
+                  </span>
                   <span>Clear Pricing & Documentation</span>
                 </li>
               </ul>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </section>
@@ -760,7 +746,6 @@ function Ecosystem() {
 
       <div className="mx-auto max-w-5xl px-6 relative z-10">
         <div className="border border-[var(--gold)]/10 bg-[var(--navy-deep)]/40 backdrop-blur rounded-lg overflow-hidden grid lg:grid-cols-12">
-          
           {/* Left Visual Accent Column */}
           <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[var(--gold)]/10 flex flex-col justify-between bg-[var(--navy-deep)]/[0.6] relative group">
             {/* Corner Bracket Accents for architectural blueprint aesthetic */}
@@ -778,10 +763,12 @@ function Ecosystem() {
               </div>
               <h2 className="font-serif text-[32px] md:text-[38px] leading-[1.15] text-[var(--cream)] group-hover:text-[var(--gold)] transition-colors duration-500">
                 Finance powered by <br />
-                <span className="italic text-[var(--gold)] group-hover:text-[var(--cream)] transition-colors duration-500">Mortgage Only.</span>
+                <span className="italic text-[var(--gold)] group-hover:text-[var(--cream)] transition-colors duration-500">
+                  Mortgage Only.
+                </span>
               </h2>
             </div>
-            
+
             <div className="mt-12 lg:mt-24 pt-4 border-t border-[var(--gold)]/10 text-[10px] font-mono tracking-widest text-[var(--cream)]/30 uppercase">
               STRATEGY-LED BORROWING
             </div>
@@ -794,9 +781,9 @@ function Ecosystem() {
               <div className="w-12 h-[1px] bg-[var(--gold)]/30" />
               <p className="text-[var(--cream)]/75 leading-relaxed text-[14px]">
                 Every Blueprint is structured against a real finance path. Mortgage Only — our
-                specialist investor finance arm — sits inside every engagement, structuring borrowing
-                capacity, lender strategy, and equity extraction across the full portfolio. Existing
-                brokers are welcome; we'll work alongside them.
+                specialist investor finance arm — sits inside every engagement, structuring
+                borrowing capacity, lender strategy, and equity extraction across the full
+                portfolio. Existing brokers are welcome; we'll work alongside them.
               </p>
             </div>
 
@@ -812,7 +799,6 @@ function Ecosystem() {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -857,7 +843,7 @@ function Founder() {
             stumbled into.
           </p>
           <a
-            href="#"
+            href="/about"
             className="inline-block mt-10 text-sm tracking-[0.2em] uppercase text-[var(--gold)] border-b border-[var(--gold)]/40 pb-2 hover:border-[var(--gold)]"
           >
             About Tarun →
@@ -880,7 +866,8 @@ function FooterCTA() {
           <span className="block italic text-[var(--gold)]">with intent?</span>
         </h2>
         <p className="mt-8 text-[14px] text-[var(--cream)]/75 leading-relaxed max-w-lg mx-auto">
-          Book a free 30-minute Qualifying Call. We'll assess fit, answer your questions, and walk you through how the Blueprint engagement works.
+          Book a free 30-minute Qualifying Call. We'll assess fit, answer your questions, and walk
+          you through how the Blueprint engagement works.
         </p>
         <div className="mt-12 flex justify-center">
           <CTAButton />
@@ -910,32 +897,44 @@ function SiteFooter() {
               </span>
             </div>
             <p className="text-sm text-[var(--cream)]/50 max-w-sm">
-              Strategy-led acquisition for high-net-worth professionals scaling multi-million dollar portfolios.
+              Strategy-led acquisition for high-net-worth professionals scaling multi-million dollar
+              portfolios.
             </p>
           </div>
-          
+
           {/* Links */}
-          <div>                
-            <h4 className="text-[var(--gold)] uppercase tracking-widest text-xs font-bold mb-4">Resources</h4>
+          <div>
+            <h4 className="text-[var(--gold)] uppercase tracking-widest text-xs font-bold mb-4">
+              Resources
+            </h4>
             <ul className="space-y-2 text-sm text-[var(--cream)]/60">
-              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">Blueprint Process</li>
-              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">Finance Hub</li>
+              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">
+                Blueprint Process
+              </li>
+              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">
+                Finance Hub
+              </li>
             </ul>
           </div>
-          
+
           {/* Contact/Support */}
-          <div>                
-            <h4 className="text-[var(--gold)] uppercase tracking-widest text-xs font-bold mb-4">Support</h4>
+          <div>
+            <h4 className="text-[var(--gold)] uppercase tracking-widest text-xs font-bold mb-4">
+              Support
+            </h4>
             <ul className="space-y-2 text-sm text-[var(--cream)]/60">
-              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">Contact</li>
+              <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">
+                Contact
+              </li>
               <li className="hover:text-[var(--cream)] transition-colors cursor-pointer">FAQ</li>
             </ul>
           </div>
         </div>
-        
+
         {/* Bottom Area: Copyright */}
         <div className="pt-8 border-t border-[var(--cream)]/10 text-center md:text-left text-xs text-[var(--cream)]/40">
-          © {new Date().getFullYear()} Elevare Portfolio. All rights reserved. Registered in Australia.
+          © {new Date().getFullYear()} Elevare Portfolio. All rights reserved. Registered in
+          Australia.
         </div>
       </div>
     </footer>
@@ -979,7 +978,7 @@ function MarqueeStrip() {
 function Index() {
   return (
     <main className="bg-[var(--navy)] text-[var(--cream)] min-h-screen">
-      <Nav />
+      <Navbar />
       <Hero />
       <SectionDivider />
       <Differentiator />
