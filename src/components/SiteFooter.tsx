@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 
+import { eyebrowClass } from "@/components/brand";
+import { cn } from "@/lib/utils";
+
 const logo = "/assets/logo.png";
 
 export function SiteFooter() {
@@ -8,7 +11,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2 space-y-6">
-            <Link to="/" className="font-serif text-xl text-white flex items-center gap-2">
+            <Link to="/" className="font-serif text-xl text-[var(--cream)] flex items-center gap-2">
               <img src={logo} alt="Elevare logo" className="w-[32px] h-[55px] object-contain" />
               <span>
                 Elevare Portfolio<span className="text-[var(--gold)]">.</span>
@@ -21,24 +24,24 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="text-[var(--gold)] uppercase tracking-widest text-[10px] font-bold mb-4 font-mono">
+            <h4 className={cn(eyebrowClass, "mb-4 font-mono")}>
               Resources
             </h4>
             <ul className="space-y-2 text-sm text-[var(--cream)]/60 font-light">
               <li>
-                <Link to="/blueprint" className="hover:text-white transition-colors">
+                <Link to="/blueprint" className="hover:text-[var(--cream)] transition-colors">
                   Blueprint Process
                 </Link>
               </li>
               <li>
-                <Link to="/process" className="hover:text-white transition-colors">
+                <Link to="/process" className="hover:text-[var(--cream)] transition-colors">
                   Our Process
                 </Link>
               </li>
               <li>
                 <a
                   href="https://mortgageonly.com.au"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[var(--cream)] transition-colors"
                   referrerPolicy="no-referrer"
                 >
                   Finance Hub
@@ -48,17 +51,17 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="text-[var(--gold)] uppercase tracking-widest text-[10px] font-bold mb-4 font-mono">
+            <h4 className={cn(eyebrowClass, "mb-4 font-mono")}>
               Support
             </h4>
             <ul className="space-y-2 text-sm text-[var(--cream)]/60 font-light">
               <li>
-                <Link to="/booking" className="hover:text-white transition-colors">
+                <Link to="/booking" className="hover:text-[var(--cream)] transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-white transition-colors">
+                <Link to="/about" className="hover:text-[var(--cream)] transition-colors">
                   About
                 </Link>
               </li>

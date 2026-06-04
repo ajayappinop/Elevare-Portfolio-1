@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
+import { Eyebrow, pageShellClass, Reveal, SectionDivider } from "@/components/brand";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -35,44 +36,6 @@ export const Route = createFileRoute("/")({
 
 const CTA_LABEL = "Book a Qualifying Call";
 
-import type { Variants } from "framer-motion";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={fadeUp}
-      transition={{ delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium">
-      {children}
-    </p>
-  );
-}
-
 function CTAButton({ className = "" }: { className?: string }) {
   return (
     <a
@@ -82,14 +45,6 @@ function CTAButton({ className = "" }: { className?: string }) {
       {CTA_LABEL}
       <span aria-hidden>→</span>
     </a>
-  );
-}
-
-function SectionDivider() {
-  return (
-    <div className="mx-auto max-w-6xl px-6">
-      <div className="gold-rule" />
-    </div>
   );
 }
 
@@ -258,7 +213,7 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.9 }}
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
           >
-            <CTAButton className="!px-8 !py-4 font-bold !tracking-wide hover:!bg-[#c2a27b]" />
+            <CTAButton className="!px-8 !py-4 font-bold !tracking-wide hover:!bg-[var(--gold-soft)]" />
           </motion.div>
         </div>
       </motion.div>
@@ -902,7 +857,7 @@ function MarqueeStrip() {
 
 function Index() {
   return (
-    <main className="bg-[var(--navy)] text-[var(--cream)] min-h-screen">
+    <main className={`${pageShellClass} min-h-screen`}>
       <Navbar />
       <Hero />
       <SectionDivider />

@@ -1,12 +1,26 @@
-import { useState, useEffect, useRef } from "react";
 import { Navbar } from "@/components/Navbar";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, type Variants } from "framer-motion";
 import {
-  FileText,
+  bodyClass,
+  containerClass,
+  creamBodyClass,
+  creamSectionClass,
+  Eyebrow,
+  h1Class,
+  h2Class,
+  h2CreamClass,
+  pageShellClass,
+  PrimaryCTA,
+  Reveal,
+  SecondaryCTA,
+  sectionClass,
+  SectionContainer,
+  SectionDivider,
+} from "@/components/brand";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import {
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
   DollarSign,
   RefreshCw,
   BarChart,
@@ -15,7 +29,10 @@ import {
   ChevronRight,
   Plus,
   ChevronDown,
-  Info,
+  Sparkles,
+  Clock,
+  Shield,
+  FileText,
 } from "lucide-react";
 
 export const Route = createFileRoute("/blueprint")({
@@ -31,50 +48,6 @@ export const Route = createFileRoute("/blueprint")({
   }),
   component: BlueprintPage,
 });
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={fadeUp}
-      transition={{ delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[11px] tracking-[0.2em] font-sans font-bold uppercase text-[var(--gold)]">
-      {children}
-    </p>
-  );
-}
-
-function SectionDivider() {
-  return (
-    <div className="mx-auto max-w-6xl px-6">
-      <div className="gold-rule" />
-    </div>
-  );
-}
 
 function BlueprintPage() {
   const [activeIdx, setActiveIdx] = useState(0);
@@ -178,7 +151,7 @@ function BlueprintPage() {
   }, [activeIdx, isPaused, blueprintSections.length]);
 
   return (
-    <main className="bg-[var(--navy)] text-[var(--cream)] min-h-screen pt-24 selection:bg-[var(--gold)]/30 selection:text-white">
+    <main className={`${pageShellClass} selection:text-[var(--cream)]`}>
       <Navbar />
 
       {/* SECTION 1 - HEADER */}
@@ -207,9 +180,9 @@ function BlueprintPage() {
       <section className="py-24 md:py-32 bg-[var(--navy)]">
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
-            <h2 className="font-serif text-[36px] text-white font-light leading-snug">
+            <h2 className="font-serif text-[36px] text-[var(--cream)] font-light leading-snug">
               Not a property report.{" "}
-              <span className="italic text-[#c99d4e]">A portfolio plan.</span>
+              <span className="italic text-[var(--gold)]">A portfolio plan.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
@@ -227,7 +200,7 @@ function BlueprintPage() {
       <SectionDivider />
 
       {/* SECTION 3 - WHAT'S INSIDE */}
-      <section className="py-24 md:py-36 bg-[#f6f1e9] overflow-hidden">
+      <section className="py-24 md:py-32 bg-[var(--cream-section)] overflow-hidden">
         <div className="mx-auto max-w-6xl px-6">
           {/* Top block layout from screenshot */}
           <div className="flex flex-col sm:flex-row items-stretch gap-6 lg:gap-10 relative mb-16 h-[400px]">
@@ -237,13 +210,13 @@ function BlueprintPage() {
             </div>
 
             {/* Banner Image Frame with overlapping block */}
-            <div className="relative flex-1 aspect-[21/9] min-h-[220px] md:min-h-[320px] overflow-hidden rounded-lg border border-stone-200/50">
+            <div className="relative flex-1 aspect-[21/9] min-h-[220px] md:min-h-[320px] overflow-hidden rounded-lg border border-[var(--cream-section-subtle)]/25/50">
               <img
                 src="/assets/hero-architecture.png"
                 alt="Elevare Blueprint architecture overview"
                 className="w-full h-full object-cover grayscale opacity-80"
               />
-              <div className="absolute inset-0 bg-stone-900/10" />
+              <div className="absolute inset-0 bg-[var(--cream-section-foreground)]/10" />
 
               {/* Overlapping Gold Box heading on the right */}
               <div
@@ -283,10 +256,10 @@ function BlueprintPage() {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   className="space-y-4"
                 >
-                  <h4 className="font-serif text-[28px] md:text-[32px] text-stone-900 leading-snug">
+                  <h4 className="font-serif text-[28px] md:text-[32px] text-[var(--cream-section-foreground)] leading-snug">
                     {blueprintSections[activeIdx].title}
                   </h4>
-                  <p className="text-[15px] sm:text-[16px] leading-relaxed text-stone-700 font-light">
+                  <p className="text-[15px] sm:text-[16px] leading-relaxed text-[var(--cream-section-muted)] font-light">
                     {blueprintSections[activeIdx].desc}
                   </p>
                 </motion.div>
@@ -310,7 +283,7 @@ function BlueprintPage() {
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
-                  <span className="text-[11px] font-mono text-stone-500 ml-4 font-medium tracking-widest">
+                  <span className="text-[11px] font-mono text-[var(--cream-section-subtle)] ml-4 font-medium tracking-widest">
                     0{activeIdx + 1} <span className="text-[var(--gold)]">/</span> 08
                   </span>
                 </div>
@@ -333,7 +306,7 @@ function BlueprintPage() {
                   return (
                     <div
                       key={idx}
-                      className="w-[280px] md:w-[325px] shrink-0 aspect-[4/5] relative rounded-lg overflow-hidden border border-stone-200 shadow-md group cursor-pointer snap-start transition-all duration-300"
+                      className="w-[280px] md:w-[325px] shrink-0 aspect-[4/5] relative rounded-lg overflow-hidden border border-[var(--cream-section-subtle)]/25 shadow-md group cursor-pointer snap-start transition-all duration-300"
                       onMouseEnter={() => setActiveIdx(idx)}
                     >
                       {/* Section Image */}
@@ -352,13 +325,13 @@ function BlueprintPage() {
                         <span className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase mb-1">
                           SECTION 0{idx + 1}
                         </span>
-                        <h5 className="font-sans text-[15px] md:text-[18px] text-white font-semibold leading-snug">
+                        <h5 className="font-sans text-[15px] md:text-[18px] text-[var(--cream)] font-semibold leading-snug">
                           {section.title}
                         </h5>
                       </div>
 
                       {/* Custom Blank Light Overlay Mode */}
-                      <div className="absolute inset-0 bg-[#001c3a]/95 backdrop-blur flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className="absolute inset-0 bg-[var(--overlay-navy)] backdrop-blur flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
                         {/* Status Label */}
                         <div className="text-center font-mono text-[10px] tracking-widest text-[var(--gold)]/80 uppercase mt-2">
                           ACTIVE // STRATEGY
@@ -366,7 +339,7 @@ function BlueprintPage() {
 
                         {/* Centered Heading */}
                         <div className="text-center space-y-2.5 my-auto">
-                          <h4 className="font-serif font-normal text-[16px] md:text-[18px] text-white uppercase leading-snug px-3 tracking-wider">
+                          <h4 className="font-serif font-normal text-[16px] md:text-[18px] text-[var(--cream)] uppercase leading-snug px-3 tracking-wider">
                             {section.title}
                           </h4>
                           <p className="text-[10px] font-mono tracking-widest text-[var(--gold)]/90 uppercase">
@@ -393,26 +366,68 @@ function BlueprintPage() {
       <SectionDivider />
 
       {/* SECTION 4 - HOW IT'S DELIVERED */}
-      <section className="py-24 md:py-36 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10 relative overflow-hidden">
-        {/* Subtle radial glow overlay */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--gold)]/5 rounded-full blur-[120px] pointer-events-none select-none" />
-
+      <section className="py-24 md:py-32 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10 relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column: Heading & Body */}
-            <div className="lg:col-span-5 space-y-6">
-              <Reveal>
-                <div className="space-y-4">
-                  <Eyebrow>DELIVERY FRAMEWORK</Eyebrow>
-                  <h2 className="font-serif text-[36px] text-white font-light leading-snug">
-                    25 pages. <br />
-                    90-minute walkthrough. <br />
-                    <span className="italic text-[#c99d4e]">Yours to keep.</span>
-                  </h2>
-                </div>
+          <Reveal>
+            <Eyebrow>DELIVERY FRAMEWORK</Eyebrow>
+          </Reveal>
+
+          <div className="mt-10 grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+            {/* Left: stats grid + heading + body */}
+            <div className="lg:col-span-5 flex flex-col">
+              <Reveal delay={0.05}>
+                <h2 className="font-serif text-[32px] md:text-[36px] text-[var(--cream)] font-light leading-snug mb-8">
+                  25 pages. <br />
+                  90-minute walkthrough. <br />
+                  <span className="italic text-[var(--gold)]">Yours to keep.</span>
+                </h2>
               </Reveal>
-              <Reveal delay={0.15}>
-                <p className="font-sans text-[14px] text-[var(--cream)]/80 leading-relaxed font-light">
+
+              <div className="grid grid-cols-2 border border-[var(--gold)]/15">
+                {[
+                  {
+                    stat: "25",
+                    subtitle: "STRATEGY BRIEF",
+                    label: "25-Page Strategic Blueprint",
+                  },
+                  {
+                    stat: "90",
+                    subtitle: "DIRECT REVIEW",
+                    label: "90-Min Strategy Walkthrough",
+                  },
+                  {
+                    stat: "100%",
+                    subtitle: "PORTABLE ASSET",
+                    label: "100% Untied Ownership",
+                  },
+                  {
+                    stat: "2–3",
+                    subtitle: "FINANCE HANDOFF",
+                    label: "Finance Pipeline Integration",
+                  },
+                ].map((item, idx) => (
+                  <Reveal key={item.label} delay={0.1 + idx * 0.05}>
+                    <div
+                      className={`flex flex-col justify-center p-5 md:p-6 ${
+                        idx % 2 === 0 ? "border-r border-[var(--gold)]/15" : ""
+                      } ${idx < 2 ? "border-b border-[var(--gold)]/15" : ""}`}
+                    >
+                      <p className="font-sans text-[32px] md:text-[36px] font-semibold leading-none text-[var(--cream)]">
+                        {item.stat}
+                      </p>
+                      <p className="mt-2 text-[9px] font-mono uppercase tracking-[0.14em] text-[var(--gold)]">
+                        {item.subtitle}
+                      </p>
+                      <p className="mt-1 text-[11px] font-medium text-[var(--cream)]/70">
+                        {item.label}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal delay={0.35} className="mt-8">
+                <p className="font-sans text-[14px] text-[var(--cream)]/80 leading-relaxed font-light max-w-md">
                   We build your Blueprint over a structured 2–3 week engagement. You receive the
                   full document, a 90-minute strategy walkthrough with Tarun, and direct lines into
                   Mortgage Only for finance structuring questions. The Blueprint is yours — to read,
@@ -421,56 +436,40 @@ function BlueprintPage() {
               </Reveal>
             </div>
 
-            {/* Right Column: Key Delivery Milestones */}
-            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-              {[
-                {
-                  icon: FileText,
-                  title: "25-Page Strategic Blueprint",
-                  subtitle: "STRATEGY BRIEF",
-                  desc: "Meticulous mapping of sub-markets, cash-flow stress testing, equity leverage timelines, and exact asset criteria.",
-                },
-                {
-                  icon: Sparkles,
-                  title: "90-Min Strategy Walkthrough",
-                  subtitle: "DIRECT REVIEW",
-                  desc: "An exhaustive line-by-line review of your blueprint with Tarun. Calibrate risk parameters and direct next steps.",
-                },
-                {
-                  icon: CheckCircle2,
-                  title: "100% Untied Ownership",
-                  subtitle: "PORTABLE ASSET",
-                  desc: "An independent strategy asset you keep. Share with your accountant, broker, or financial planner as you see fit.",
-                },
-                {
-                  icon: Info,
-                  title: "Finance Pipeline Integration",
-                  subtitle: "FINANCE HANDOFF",
-                  desc: "Direct communication mapping to Mortgage Only so the finance structures perfectly accommodate your purchase roadmap.",
-                },
-              ].map((item, idx) => {
-                const IconComponent = item.icon;
-                return (
-                  <Reveal key={idx} delay={idx * 0.1}>
-                    <div className="border border-[var(--gold)]/10 hover:border-[var(--gold)]/25 p-6 rounded-xl bg-[var(--navy)]/30 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 group">
-                      <div className="p-3 bg-[var(--gold)]/10 rounded-lg text-[var(--gold)] w-fit mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-[9px] font-mono text-[var(--gold)] tracking-wider">
-                          {item.subtitle}
-                        </span>
-                        <h4 className="font-sans font-semibold text-[15px] text-white">
-                          {item.title}
-                        </h4>
-                        <p className="font-sans text-[12.5px] text-[var(--cream)]/60 font-light leading-relaxed pt-1.5">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
+            {/* Right: staggered imagery + CTA */}
+            <div className="lg:col-span-7">
+              <Reveal delay={0.15} className="grid h-full grid-cols-12 gap-4 md:gap-5">
+                <div className="col-span-12 sm:col-span-6 flex flex-col gap-4 md:gap-5">
+                  <div className="relative overflow-hidden aspect-[4/5] w-full bg-[var(--navy)]">
+                    <img
+                      src="/assets/hero-architecture.png"
+                      alt="Luxury architecture and investment property"
+                      className="h-full w-full object-cover opacity-90"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/40 to-transparent" />
+                  </div>
+                  <Link
+                    to="/booking"
+                    className="inline-flex w-full items-center justify-between bg-[var(--cream)] px-6 py-4 text-[11px] font-mono uppercase tracking-[0.18em] text-[var(--navy-deep)] transition-colors hover:bg-[var(--gold-soft)]"
+                  >
+                    <span>Book a Qualifying Call</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="col-span-12 sm:col-span-6 sm:pt-16 md:pt-24">
+                  <div className="relative overflow-hidden aspect-[4/5] w-full bg-[var(--navy)]">
+                    <img
+                      src="/assets/property-3.png"
+                      alt="Premium investment property architecture"
+                      className="h-full w-full object-cover opacity-90"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/35 to-transparent" />
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -480,7 +479,7 @@ function BlueprintPage() {
 
       {/* SECTION 5 - INVESTMENT */}
       <section
-        className="py-24 md:py-36 bg-[var(--navy)] relative overflow-hidden"
+        className="py-24 md:py-32 bg-[var(--navy)] relative overflow-hidden"
         id="investment-section"
       >
         {/* Subtle decorative grid overlay */}
@@ -491,8 +490,8 @@ function BlueprintPage() {
             <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--gold)] uppercase block mb-3">
               INVESTMENT STRUCTURE
             </span>
-            <h2 className="font-serif text-[36px] text-white font-light leading-snug">
-              Flat-fee. No retainers. <span className="italic text-[#c99d4e]">Transparent.</span>
+            <h2 className="font-serif text-[36px] text-[var(--cream)] font-light leading-snug">
+              Flat-fee. No retainers. <span className="italic text-[var(--gold)]">Transparent.</span>
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-[var(--cream)]/60 font-light max-w-xl mx-auto">
               We align our incentives completely with your asset selection. No vendor kickbacks, no
@@ -512,12 +511,12 @@ function BlueprintPage() {
                       <span className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase block mb-1">
                         PILLAR 01
                       </span>
-                      <h3 className="font-serif text-[22px] text-white font-medium">
+                      <h3 className="font-serif text-[22px] text-[var(--cream)] font-medium">
                         Engagement Fee
                       </h3>
                     </div>
                     <div className="text-left sm:text-right">
-                      <span className="text-3xl font-sans font-bold text-white block">$3,000</span>
+                      <span className="text-3xl font-sans font-bold text-[var(--cream)] block">$3,000</span>
                       <span className="text-[10px] font-mono text-[var(--gold)] bg-[var(--gold)]/10 border border-[var(--gold)]/20 px-2 py-0.5 rounded">
                         PAID UPFRONT ON SIGNING
                       </span>
@@ -557,12 +556,12 @@ function BlueprintPage() {
                       <span className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase block mb-1">
                         PILLAR 02 • MAIN ENGAGEMENT
                       </span>
-                      <h3 className="font-serif text-[22px] text-white font-medium">
+                      <h3 className="font-serif text-[22px] text-[var(--cream)] font-medium">
                         Acquisition Fee
                       </h3>
                     </div>
                     <div className="text-left sm:text-right">
-                      <span className="text-3xl font-sans font-bold text-white block">
+                      <span className="text-3xl font-sans font-bold text-[var(--cream)] block">
                         2% / $15k Min
                       </span>
                       <span className="text-[10px] font-mono text-[var(--gold)] bg-[var(--gold)]/15 border border-[var(--gold)]/25 px-2 py-0.5 rounded">
@@ -604,12 +603,12 @@ function BlueprintPage() {
                       <span className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase block mb-1">
                         PILLAR 03 • ROADMAP EVOLUTION
                       </span>
-                      <h3 className="font-serif text-[22px] text-white font-medium">
+                      <h3 className="font-serif text-[22px] text-[var(--cream)] font-medium">
                         Blueprint Revision
                       </h3>
                     </div>
                     <div className="text-left sm:text-right">
-                      <span className="text-3xl font-sans font-bold text-white block">
+                      <span className="text-3xl font-sans font-bold text-[var(--cream)] block">
                         Included
                       </span>
                       <span className="text-[10px] font-mono text-[var(--gold)] bg-[var(--gold)]/10 border border-[var(--gold)]/20 px-2 py-0.5 rounded">
@@ -656,7 +655,7 @@ function BlueprintPage() {
                         <Target className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="font-serif font-semibold text-[18px] text-white">
+                        <h4 className="font-serif font-semibold text-[18px] text-[var(--cream)]">
                           Fee Illustrator
                         </h4>
                         <p className="text-[11px] font-mono text-[var(--gold)] uppercase tracking-wider">
@@ -703,7 +702,7 @@ function BlueprintPage() {
                         <span className="text-[11px] font-mono text-[var(--cream)]/50 uppercase">
                           TARGET ASSET PRICE
                         </span>
-                        <span className="font-sans font-bold text-[18px] text-white text-right">
+                        <span className="font-sans font-bold text-[18px] text-[var(--cream)] text-right">
                           {new Intl.NumberFormat("en-AU", {
                             style: "currency",
                             currency: "AUD",
@@ -722,7 +721,7 @@ function BlueprintPage() {
                           onChange={(e) => setPurchasePrice(Number(e.target.value))}
                           className="w-full h-1.5 bg-[var(--navy)] rounded-lg appearance-none cursor-pointer accent-[var(--gold)] focus:outline-none"
                           style={{
-                            background: `linear-gradient(to right, #c99d4e 0%, #c99d4e ${
+                            background: `linear-gradient(to right, var(--gold) 0%, var(--gold) ${
                               ((purchasePrice - 500000) / (4000000 - 500000)) * 100
                             }%, rgba(201, 157, 78, 0.1) ${
                               ((purchasePrice - 500000) / (4000000 - 500000)) * 100
@@ -742,7 +741,7 @@ function BlueprintPage() {
 
                       <div className="flex justify-between items-center text-[12px] text-[var(--cream)]/70">
                         <span className="font-light">Gross Acquisition Fee (2%)</span>
-                        <span className="font-mono text-white text-right font-medium">
+                        <span className="font-mono text-[var(--cream)] text-right font-medium">
                           {new Intl.NumberFormat("en-AU", {
                             style: "currency",
                             currency: "AUD",
@@ -762,7 +761,7 @@ function BlueprintPage() {
 
                       <div className="flex justify-between items-start">
                         <div>
-                          <span className="text-[13px] font-medium text-white block">
+                          <span className="text-[13px] font-medium text-[var(--cream)] block">
                             Balance Due on Unconditional
                           </span>
                           <span className="text-[9px] font-mono text-[var(--cream)]/50 uppercase block">
@@ -808,7 +807,7 @@ function BlueprintPage() {
       <SectionDivider />
 
       {/* SECTION 5 - WHY IT WORKS */}
-      <section className="py-24 md:py-36 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10">
+      <section className="py-24 md:py-32 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
             {/* Left Column: Heading & Redesigned List */}
@@ -890,32 +889,86 @@ function BlueprintPage() {
       {/* SECTION 6 - CTA */}
       <section
         id="booking"
-        className="relative py-32 text-center bg-[var(--navy-deep)] overflow-hidden border-t border-[var(--gold)]/10"
+        className="relative overflow-hidden border-t border-[var(--gold)]/10 bg-[var(--navy-deep)] py-24 md:py-32"
       >
-        {/* Background Image & Blue Overlay */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img
-            src="/assets/blueprint-abstract.png"
-            alt="Elevare Blueprint architectural drafting background"
-            className="w-full h-full object-cover opacity-35 brightness-[0.7] contrast-110"
+            src="/assets/hero-architecture.png"
+            alt=""
+            aria-hidden
+            className="h-full w-full object-cover opacity-20 brightness-[0.55] contrast-110"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-deep)]/70 via-[#002b54]/60 to-[var(--navy-deep)]/75" />
-          <div className="absolute inset-0 bg-[#001c3a]/30 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-deep)] via-[var(--navy-deep)]/92 to-[var(--navy-deep)]/75" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(194,162,75,0.12)_0%,_transparent_65%)]" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-lg px-6">
-          <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)] mb-8">
-            Begin your <br /> Blueprint engagement.
-          </h2>
-          <a
-            href="https://calendly.com/elevare"
-            className="inline-flex items-center justify-center gap-3 bg-[var(--gold)] text-[var(--navy-deep)] px-8 py-4 text-sm tracking-[0.18em] uppercase font-medium hover:bg-[var(--gold-soft)] transition-all duration-300 transform hover:scale-[1.02] shadow-xl"
-            referrerPolicy="no-referrer"
-          >
-            Book a Qualifying Call
-            <ArrowRight className="w-4 h-4" />
-          </a>
+        <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-6xl px-6">
+          <div className="gold-rule" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/20 bg-[var(--gold)]/5 px-4 py-1.5">
+                <Sparkles className="h-3.5 w-3.5 text-[var(--gold)]" />
+                <span className="text-[9px] font-mono font-semibold uppercase tracking-[0.22em] text-[var(--gold)]">
+                  Next Step
+                </span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <h2 className="font-serif text-[40px] leading-[1.05] text-[var(--cream)] md:text-[52px]">
+                Begin your
+                <span className="block italic text-[var(--gold)]">Blueprint engagement.</span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="mx-auto mt-6 max-w-xl text-[14px] font-light leading-relaxed text-[var(--cream)]/75">
+                Book a free 30-minute Qualifying Call. We&apos;ll assess fit, answer your questions,
+                and walk you through how the Blueprint engagement works.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] font-mono uppercase tracking-[0.14em] text-[var(--cream)]/55">
+                <span className="inline-flex items-center gap-2">
+                  <Clock className="h-3.5 w-3.5 text-[var(--gold)]" />
+                  30 minutes
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Shield className="h-3.5 w-3.5 text-[var(--gold)]" />
+                  No obligation
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <FileText className="h-3.5 w-3.5 text-[var(--gold)]" />
+                  Strategy walkthrough
+                </span>
+              </div>
+            </Reveal>
+
+            <Reveal
+              delay={0.4}
+              className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            >
+              <a
+                href="https://calendly.com/elevare"
+                className="group inline-flex min-w-[260px] items-center justify-center gap-3 bg-[var(--gold)] px-8 py-4 text-xs font-mono font-bold uppercase tracking-[0.18em] text-[var(--navy-deep)] shadow-[0_12px_40px_rgba(194,162,75,0.25)] transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--gold-soft)]"
+                referrerPolicy="no-referrer"
+              >
+                <span>Book a Qualifying Call</span>
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <Link
+                to="/booking"
+                className="inline-flex min-w-[260px] items-center justify-center gap-2 border border-[var(--cream)]/15 bg-[var(--navy)]/40 px-8 py-4 text-xs font-mono uppercase tracking-[0.18em] text-[var(--cream)] backdrop-blur-sm transition-colors hover:border-[var(--gold)]/40 hover:text-[var(--gold)]"
+              >
+                View booking details
+              </Link>
+            </Reveal>
+          </div>
         </div>
       </section>
 

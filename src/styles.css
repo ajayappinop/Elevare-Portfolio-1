@@ -73,6 +73,11 @@
   --gold: oklch(0.72 0.11 80);
   --gold-soft: oklch(0.78 0.09 80);
   --cream: oklch(0.96 0.012 80);
+  --cream-section: oklch(0.96 0.015 85);
+  --cream-section-foreground: oklch(0.22 0.02 256);
+  --cream-section-muted: oklch(0.42 0.02 256);
+  --cream-section-subtle: oklch(0.52 0.015 256);
+  --overlay-navy: oklch(0.17 0.035 256 / 0.95);
 
   --background: var(--navy);
   --foreground: var(--cream);

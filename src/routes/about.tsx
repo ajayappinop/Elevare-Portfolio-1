@@ -1,6 +1,20 @@
 import { Navbar } from "@/components/Navbar";
+import {
+  bodyClass,
+  creamBodyClass,
+  creamSectionClass,
+  Eyebrow,
+  h1Class,
+  h2Class,
+  h2CreamClass,
+  pageShellClass,
+  PrimaryCTA,
+  Reveal,
+  sectionClass,
+  SectionContainer,
+  SectionDivider,
+} from "@/components/brand";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
   FileText,
@@ -37,53 +51,9 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={fadeUp}
-      transition={{ delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--gold)] uppercase block mb-3 font-semibold">
-      {children}
-    </span>
-  );
-}
-
-function SectionDivider() {
-  return (
-    <div className="mx-auto max-w-6xl px-6">
-      <div className="h-[1px] bg-[var(--gold)]/15 w-full" />
-    </div>
-  );
-}
-
 function AboutPage() {
   return (
-    <main className="bg-[var(--navy)] text-[var(--cream)] min-h-screen pt-24 selection:bg-[var(--gold)]/30 selection:text-white overflow-hidden">
+    <main className={`${pageShellClass} overflow-hidden`}>
       <Navbar />
 
       {/* SECTION 1 - HEADER */}
@@ -93,7 +63,7 @@ function AboutPage() {
             <Eyebrow>ABOUT ELEVARE</Eyebrow>
           </Reveal>
           <Reveal delay={0.2}>
-            <h1 className="font-serif text-[48px] sm:text-[64px] leading-[1.05] tracking-tight text-white font-light">
+            <h1 className="font-serif text-[48px] sm:text-[64px] leading-[1.05] tracking-tight text-[var(--cream)] font-light">
               Built for investors with <br />
               <span className="italic text-[var(--gold)]">portfolio ambition.</span>
             </h1>
@@ -124,7 +94,7 @@ function AboutPage() {
                   The Problem
                 </span>
               </span>
-              <h3 className="font-serif text-[28px] md:text-[34px] leading-tight text-white font-light">
+              <h3 className="font-serif text-[28px] md:text-[34px] leading-tight text-[var(--cream)] font-light">
                 The Accumulation <br />
                 <span className="italic text-[var(--gold)]">Paradox.</span>
               </h3>
@@ -163,7 +133,7 @@ function AboutPage() {
       <SectionDivider />
 
       {/* SECTION 3 - OUR METHODOLOGY */}
-      <section className="py-24 md:py-36 relative overflow-hidden bg-[#f6f1e9]">
+      <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--cream-section)]">
         {/* Subtle grid watermark */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
@@ -179,7 +149,7 @@ function AboutPage() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <Eyebrow>OUR METHODOLOGY</Eyebrow>
-                <h2 className="font-serif text-[36px] md:text-[42px] leading-[1.1] text-stone-900 font-light">
+                <h2 className="font-serif text-[36px] md:text-[42px] leading-[1.1] text-[var(--cream-section-foreground)] font-light">
                   Strategy first. <br className="hidden lg:block" />
                   <span className="italic text-[var(--gold)]">Then acquisition.</span>
                 </h2>
@@ -188,7 +158,7 @@ function AboutPage() {
 
               <div className="space-y-6">
                 <Reveal delay={0.1}>
-                  <p className="text-[15px] sm:text-[16px] text-stone-700 leading-relaxed font-light">
+                  <p className="text-[15px] sm:text-[16px] text-[var(--cream-section-muted)] leading-relaxed font-light">
                     Every Elevare engagement starts with a Portfolio Blueprint — a documented
                     strategy that defines what you're building, your borrowing capacity, your suburb
                     shortlist, your stage plan, your risk profile, and your 90-day action map. The
@@ -197,7 +167,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={0.25}>
-                  <p className="text-[15px] sm:text-[16px] text-stone-700 leading-relaxed font-light">
+                  <p className="text-[15px] sm:text-[16px] text-[var(--cream-section-muted)] leading-relaxed font-light">
                     Once the Blueprint is built, we execute. The same team that wrote your strategy
                     runs the search, the due diligence, the negotiation, and the contract. Finance
                     is structured in parallel through Mortgage Only — our specialist investor
@@ -224,7 +194,7 @@ function AboutPage() {
                     "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop";
                 }}
               />
-              <div className="absolute inset-0 bg-stone-900/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-[var(--cream-section-foreground)]/10 pointer-events-none" />
             </Reveal>
           </div>
         </div>
@@ -233,7 +203,7 @@ function AboutPage() {
       <SectionDivider />
 
       {/* SECTION 4 - TARUN SANGHI (FOUNDER) */}
-      <section className="py-24 md:py-36 relative overflow-hidden bg-[var(--navy)]">
+      <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--navy)]">
         {/* Subtle geometric framing vector background */}
         <div className="absolute -top-[10%] -left-[10%] w-[45%] aspect-square rounded-full border border-[var(--gold)]-[0.03] pointer-events-none" />
 
@@ -284,7 +254,7 @@ function AboutPage() {
             <div className="md:col-span-7 space-y-8 md:pl-4">
               <div className="space-y-3">
                 <Eyebrow>THE FOUNDER</Eyebrow>
-                <h2 className="font-serif text-[36px] leading-tight text-white font-light">
+                <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)] font-light">
                   Tarun Sanghi,{" "}
                   <span className="italic text-[var(--gold)] font-light">Founder.</span>
                 </h2>
@@ -358,7 +328,7 @@ function AboutPage() {
       <SectionDivider />
 
       {/* SECTION 5 - WHAT MAKES US DIFFERENT */}
-      <section className="py-24 md:py-36 relative overflow-hidden bg-[#f6f1e9]">
+      <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--cream-section)]">
         {/* Subtle grid watermark */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
@@ -385,11 +355,11 @@ function AboutPage() {
             </div>
 
             {/* Header Content */}
-            <div className="relative z-10 text-center max-w-3xl mx-auto text-white space-y-4 mb-20 md:mb-24 drop-shadow-md">
-              <h2 className="font-serif text-[36px] leading-[1.1] text-white font-medium">
+            <div className="relative z-10 text-center max-w-3xl mx-auto text-[var(--cream)] space-y-4 mb-20 md:mb-24 drop-shadow-md">
+              <h2 className="font-serif text-[36px] leading-[1.1] text-[var(--cream)] font-medium">
                 What Makes Us Different
               </h2>
-              <p className="text-[14px] text-white/90 leading-relaxed font-light max-w-2xl mx-auto drop-shadow">
+              <p className="text-[14px] text-[var(--cream)]/90 leading-relaxed font-light max-w-2xl mx-auto drop-shadow">
                 Three things you won't find at most buyers agencies. We separate research,
                 execution, and finance to ensure an uncompromising standard of service.
               </p>
@@ -403,10 +373,10 @@ function AboutPage() {
                   <div className="mb-6">
                     <FileText className="w-12 h-12 text-[#259b9a]" />
                   </div>
-                  <h3 className="font-serif text-[18px] tracking-tight text-stone-900 mb-4 font-semibold">
+                  <h3 className="font-serif text-[18px] tracking-tight text-[var(--cream-section-foreground)] mb-4 font-semibold">
                     The Portfolio Blueprint
                   </h3>
-                  <p className="text-[14px] text-stone-500 leading-relaxed font-light mb-8">
+                  <p className="text-[14px] text-[var(--cream-section-subtle)] leading-relaxed font-light mb-8">
                     The Portfolio Blueprint is the foundation of every engagement — documented
                     strategy first, acquisition second.
                   </p>
@@ -419,10 +389,10 @@ function AboutPage() {
                   <div className="mb-6">
                     <Target className="w-12 h-12 text-[#f59e0b]" />
                   </div>
-                  <h3 className="font-serif text-[18px] tracking-tight text-stone-900 mb-4 font-semibold">
+                  <h3 className="font-serif text-[18px] tracking-tight text-[var(--cream-section-foreground)] mb-4 font-semibold">
                     HTAG-Powered Data
                   </h3>
-                  <p className="text-[14px] text-stone-500 leading-relaxed font-light mb-8">
+                  <p className="text-[14px] text-[var(--cream-section-subtle)] leading-relaxed font-light mb-8">
                     HTAG-powered data — every suburb shortlist is backed by institutional-grade
                     analytics, not gut feel or an outdated median.
                   </p>
@@ -435,10 +405,10 @@ function AboutPage() {
                   <div className="mb-6">
                     <TrendingUp className="w-12 h-12 text-[#10b981]" />
                   </div>
-                  <h3 className="font-serif text-[18px] tracking-tight text-stone-900 mb-4 font-semibold">
+                  <h3 className="font-serif text-[18px] tracking-tight text-[var(--cream-section-foreground)] mb-4 font-semibold">
                     Integrated Finance
                   </h3>
-                  <p className="text-[14px] text-stone-500 leading-relaxed font-light mb-8">
+                  <p className="text-[14px] text-[var(--cream-section-subtle)] leading-relaxed font-light mb-8">
                     Integrated finance through Mortgage Only — borrowing capacity and equity
                     strategy sit inside the engagement, not outside it.
                   </p>
@@ -454,7 +424,7 @@ function AboutPage() {
       <SectionDivider />
 
       {/* SECTION 6 - THE ECOSYSTEM */}
-      <section className="py-24 md:py-36 relative overflow-hidden bg-[var(--navy)]">
+      <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--navy)]">
         {/* Real background overlay integration */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           {property1 ? (
@@ -482,7 +452,7 @@ function AboutPage() {
                   </span>
                 </div>
 
-                <h2 className="font-serif text-[36px] leading-[1.15] text-white font-light">
+                <h2 className="font-serif text-[36px] leading-[1.15] text-[var(--cream)] font-light">
                   Part of a broader <br />
                   <span className="italic text-[var(--gold)] font-light">
                     wealth-creation ecosystem.
@@ -522,7 +492,7 @@ function AboutPage() {
                     <Layers className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-[16px] text-white">Elevare Portfolio</h4>
+                    <h4 className="font-serif text-[16px] text-[var(--cream)]">Elevare Portfolio</h4>
                     <p className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase">
                       WHAT SHOULD I DO?
                     </p>
@@ -545,7 +515,7 @@ function AboutPage() {
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-[16px] text-white">Mortgage Only</h4>
+                    <h4 className="font-serif text-[16px] text-[var(--cream)]">Mortgage Only</h4>
                     <p className="text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase">
                       HOW DO I STRUCTURE & FUND IT?
                     </p>
@@ -579,7 +549,7 @@ function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <h2 className="font-serif text-[36px] leading-tight text-white font-light">
+            <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)] font-light">
               Begin your portfolio masterplan
               <span className="block italic text-[var(--gold)] mt-1 font-light">
                 with total alignment.
