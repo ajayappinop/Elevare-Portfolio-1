@@ -1,4 +1,4 @@
-/** Vexur embed loader — shared by calendar and chatbot widgets */
+/** Vexur embed loader — shared calendar and chat widgets */
 export const VEXUR_LOADER = {
   src: "https://embed.vexur.com.au/v1.1.6/loader.js",
   integrity:

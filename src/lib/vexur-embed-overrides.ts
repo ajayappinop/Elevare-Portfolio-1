@@ -1,3 +1,18 @@
+export const VEXUR_SUPPORT_NAME = "Elevare Support";
+
+const VEXUR_LABEL_REPLACEMENTS: Array<[string, string]> = [
+  ["AI Assistant", VEXUR_SUPPORT_NAME],
+  ["Assistant is typing", "Typing"],
+];
+
+function applyVexurLabelReplacements(content: string) {
+  let next = content;
+  for (const [from, to] of VEXUR_LABEL_REPLACEMENTS) {
+    next = next.replaceAll(from, to);
+  }
+  return next;
+}
+
 export const VEXUR_UI_OVERRIDE_ID = "elevare-vexur-ui-overrides";
 
 export const VEXUR_UI_WHITE_CSS = `
@@ -50,18 +65,27 @@ const VEXUR_BACKDROP_BACKGROUND_PATTERNS: RegExp[] = [
 
 const VEXUR_IFRAME_BOOTSTRAP_ID = "elevare-vexur-iframe-patch";
 
-/** Runs inside the Vexur iframe before chatbot-widget.js executes. */
+/** Runs inside the Vexur iframe before the Vexur widget script executes. */
 export const VEXUR_IFRAME_PATCH_SCRIPT = `(function(){
   var ID="${VEXUR_BACKDROP_OVERRIDE_ID}";
   var CSS=${JSON.stringify(VEXUR_BACKDROP_OVERRIDE_CSS)};
   var UI_ID=${JSON.stringify(VEXUR_UI_OVERRIDE_ID)};
   var UI_CSS=${JSON.stringify(VEXUR_UI_WHITE_CSS)};
+  var labelReplacements=${JSON.stringify(VEXUR_LABEL_REPLACEMENTS)};
   var bgPatterns=${JSON.stringify(
     VEXUR_BACKDROP_BACKGROUND_PATTERNS.map((pattern) => pattern.source),
   )};
+  function applyLabels(text){
+    if(typeof text!=="string")return text;
+    var next=text;
+    for(var i=0;i<labelReplacements.length;i++){
+      next=next.split(labelReplacements[i][0]).join(labelReplacements[i][1]);
+    }
+    return next;
+  }
   function patchHtml(html){
     if(typeof html!=="string")return html;
-    var next=html;
+    var next=applyLabels(html);
     if(html.indexOf(".vw-backdrop")>=0){
       for(var i=0;i<bgPatterns.length;i++){
         next=next.replace(new RegExp(bgPatterns[i],"gi"),"$1");
@@ -72,6 +96,25 @@ export const VEXUR_IFRAME_PATCH_SCRIPT = `(function(){
       next+='<style id="'+UI_ID+'">'+UI_CSS+"</style>";
     }
     return next;
+  }
+  function sanitizeLabels(root){
+    if(!root||!root.querySelectorAll)return;
+    var selectors=".vw-chat-name, .vw-chat-button-text, .vw-chat-status, .vw-handoff-notice, .vw-message-bubble";
+    var nodes=root.querySelectorAll(selectors);
+    for(var i=0;i<nodes.length;i++){
+      var text=nodes[i].textContent;
+      if(text){
+        var next=applyLabels(text);
+        if(next!==text)nodes[i].textContent=next;
+      }
+    }
+    var labelled=root.querySelectorAll("[aria-label]");
+    for(var j=0;j<labelled.length;j++){
+      var aria=labelled[j].getAttribute("aria-label");
+      if(!aria)continue;
+      var nextAria=applyLabels(aria);
+      if(nextAria!==aria)labelled[j].setAttribute("aria-label",nextAria);
+    }
   }
   function stripBackdrop(root){
     if(!root||!root.querySelectorAll)return;
@@ -119,6 +162,7 @@ export const VEXUR_IFRAME_PATCH_SCRIPT = `(function(){
         var patched=typeof value==="string"?patchHtml(value):value;
         desc.set.call(this,patched);
         stripBackdrop(this);
+        sanitizeLabels(this);
       }
     });
   }
@@ -127,7 +171,7 @@ export const VEXUR_IFRAME_PATCH_SCRIPT = `(function(){
 let embedPatchesInstalled = false;
 
 function patchVexurMarkup(html: string) {
-  let next = html;
+  let next = applyVexurLabelReplacements(html);
 
   if (html.includes(".vw-backdrop")) {
     for (const pattern of VEXUR_BACKDROP_BACKGROUND_PATTERNS) {
@@ -176,6 +220,38 @@ function sanitizeShadowRoot(root: ShadowRoot) {
   injectOverrideStyle(root, VEXUR_BACKDROP_OVERRIDE_ID, VEXUR_BACKDROP_OVERRIDE_CSS);
   patchInjectedBackdropStyles(root);
   stripBackdropElements(root);
+  sanitizeVexurVisibleLabels(root);
+}
+
+function sanitizeVexurVisibleLabels(root: Document | ShadowRoot | Element) {
+  if (!("querySelectorAll" in root)) {
+    return;
+  }
+
+  for (const element of root.querySelectorAll<HTMLElement>(
+    ".vw-chat-name, .vw-chat-button-text, .vw-chat-status, .vw-handoff-notice, .vw-message-bubble",
+  )) {
+    if (!element.textContent) {
+      continue;
+    }
+
+    const nextText = applyVexurLabelReplacements(element.textContent);
+    if (nextText !== element.textContent) {
+      element.textContent = nextText;
+    }
+  }
+
+  for (const element of root.querySelectorAll<HTMLElement>("[aria-label]")) {
+    const ariaLabel = element.getAttribute("aria-label");
+    if (!ariaLabel) {
+      continue;
+    }
+
+    const nextAriaLabel = applyVexurLabelReplacements(ariaLabel);
+    if (nextAriaLabel !== ariaLabel) {
+      element.setAttribute("aria-label", nextAriaLabel);
+    }
+  }
 }
 
 function installIframeSrcdocPatch() {
@@ -407,6 +483,7 @@ export function sanitizeVexurEmbed(widget: HTMLElement) {
     patchInjectedBackdropStyles(root);
     stripBackdropElements(root);
     stripVexurFrameBackgrounds(root);
+    sanitizeVexurVisibleLabels(root);
   }
 }
 

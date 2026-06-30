@@ -190,7 +190,7 @@
     box-sizing: border-box;
   }
 
-  /* Vexur chatbot — shell clips launcher when closed; inner widget owns Vexur sizing */
+  /* Vexur chat widget — shell clips launcher when closed; inner widget owns Vexur sizing */
   .vexur-chatbot-host {
     --vexur-launcher-width: 184px;
     --vexur-chat-offset-x: max(16px, env(safe-area-inset-right, 0px));
