@@ -322,7 +322,7 @@ function Blueprint() {
                   "Investor Profile & Goals",
                   "Borrowing Capacity & Finance Path",
                   "Portfolio Thesis",
-                  "Suburb Shortlist (HTAG-backed)",
+                  "Suburb Shortlist (Enterprise Grade Analysis)",
                   "Stage Plan & Sequencing",
                   "Risk Profile & Mitigation",
                   "Finance Structuring",
@@ -360,21 +360,21 @@ function Process() {
       phase: "Step I",
       title: "Strategy",
       subtitle: "STRATEGY",
-      body: "We construct your bespoke Portfolio Blueprint. A documented, mathematically modeled masterplan of what you are scaling, why, and how, aligned with your long-term wealth horizon.",
+      body: "We build your Portfolio Blueprint — a documented plan for what you're scaling, why, and how, aligned to your long-term wealth goals.",
     },
     {
       n: "02",
       phase: "Step II",
       title: "Acquisition",
       subtitle: "ACQUISITION",
-      body: "We execute seamlessly against your Blueprint. This involves sourcing off-market assets, conducting stringent physical and financial due diligence, and acquiring the property under superior terms while Mortgage Only structures the multi-tier lending.",
+      body: "We execute your Acquisition Brief — search, due diligence, negotiation, and contract. Mortgage Only structures finance in parallel.",
     },
     {
       n: "03",
       phase: "Step III",
       title: "Scale",
       subtitle: "SCALE",
-      body: "Your Blueprint is audited and revised before each subsequent purchase. This continuous feedback loop of equity extraction, market analysis, and risk mitigation guarantees you scale efficiently without structural dead-ends.",
+      body: "Before each new purchase, your Blueprint is revised against updated borrowing capacity, market conditions, and portfolio goals.",
     },
   ];
 
@@ -400,9 +400,8 @@ function Process() {
                 From strategy to <span className="italic text-[var(--gold)]">scale.</span>
               </h2>
               <p className="mt-6 text-sm text-[var(--cream)]/60 leading-relaxed font-light">
-                Our three-stage methodology takes you from tactical accumulation to modern
-                institutional performance. We don't search for properties until we've engineered
-                your portfolio's complete financial architecture.
+                Three stages — strategy, acquisition, and scale. We build your Portfolio Blueprint
+                first, then execute property-by-property against it.
               </p>
             </div>
 
@@ -527,7 +526,8 @@ function Audience() {
             {/* Right Column of Collage */}
             <div className="space-y-4 md:space-y-6">
               {/* Burnt Orange Phone Panel */}
-              <motion.div
+              <motion.a
+                href="tel:+61434702850"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -544,13 +544,13 @@ function Audience() {
                 </div>
                 <div>
                   <p className="text-[10px] tracking-wider uppercase text-[var(--navy-deep)]/80 shrink-0">
-                    Call to Anytime
+                    Call us anytime
                   </p>
                   <p className="text-sm md:text-md font-serif font-semibold tracking-tight whitespace-nowrap mt-1">
-                    +92 3800 8060
+                    +61 4 3470 2850
                   </p>
                 </div>
-              </motion.div>
+              </motion.a>
 
               {/* Top Image: Skyscraper */}
               <motion.div
@@ -590,12 +590,7 @@ function Audience() {
           <div className="lg:col-span-7 space-y-8">
             <Reveal>
               <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-[1px] bg-[var(--gold)]" />
-                  <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--gold)] font-semibold">
-                    Audience block
-                  </span>
-                </div>
+                <Eyebrow>Who we work with</Eyebrow>
                 <h2 className="font-serif text-[38px] md:text-[46px] leading-[1.15] text-[var(--navy-deep)] tracking-tight">
                   Built for investors with <br className="hidden md:inline" />
                   portfolio ambition.
@@ -737,7 +732,7 @@ function Ecosystem() {
                 href="https://mortgageonly.com.au"
                 className="group inline-flex items-center gap-6 text-sm tracking-[0.2em] font-serif uppercase text-[var(--gold)] pb-2 border-b border-[var(--gold)]/20 hover:border-[var(--gold)] transition-all duration-300"
               >
-                <span>MORTGAGE ONLY</span>
+                <span>Mortgage Only</span>
                 <span className="transform group-hover:translate-x-2 transition-transform duration-300">
                   →
                 </span>
@@ -825,7 +820,7 @@ function MarqueeStrip() {
   const items = [
     "Strategy-led",
     "Portfolio Blueprint",
-    "HTAG-backed data",
+    "Enterprise Grade Analysis",
     "Integrated finance",
     "10-year scaling arc",
     "Accountable execution",

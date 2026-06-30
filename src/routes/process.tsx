@@ -120,7 +120,7 @@ function ProcessPage() {
       <section className={`border-t border-[var(--gold)]/10 bg-[var(--navy-deep)] text-center ${sectionClass}`}>
         <SectionContainer narrow>
           <Reveal>
-            <PrimaryCTA href="https://calendly.com/elevare" />
+            <PrimaryCTA href="/booking" />
           </Reveal>
         </SectionContainer>
       </section>

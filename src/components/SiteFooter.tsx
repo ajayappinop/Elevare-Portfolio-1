@@ -61,6 +61,14 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <a
+                  href="tel:+61434702850"
+                  className="hover:text-[var(--cream)] transition-colors"
+                >
+                  +61 4 3470 2850
+                </a>
+              </li>
+              <li>
                 <Link to="/about" className="hover:text-[var(--cream)] transition-colors">
                   About
                 </Link>

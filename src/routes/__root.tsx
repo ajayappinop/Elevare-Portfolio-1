@@ -3,6 +3,7 @@ import { Outlet, Link, createRootRouteWithContext, useRouter } from "@tanstack/r
 import { useEffect, type ReactNode } from "react";
 
 import { SiteFooter } from "@/components/SiteFooter";
+import { VexurChatbot } from "@/components/VexurChatbot";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -81,6 +82,7 @@ function RootComponent() {
         <Outlet />
         <SiteFooter />
       </div>
+      <VexurChatbot />
     </QueryClientProvider>
   );
 }

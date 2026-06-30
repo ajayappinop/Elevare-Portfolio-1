@@ -80,10 +80,10 @@ function BlueprintPage() {
     },
     {
       title: "Suburb Shortlist",
-      desc: "HTAG-backed: RCS scores, demand-depth, BBT signals.",
+      desc: "Enterprise Grade Analysis: RCS scores, demand-depth, BBT signals.",
       image: "/assets/property-4.png",
       tag: "ANALYSIS",
-      subtitle: "HTAG METRICS",
+      subtitle: "KEY METRICS",
     },
     {
       title: "Stage Plan",
@@ -398,12 +398,12 @@ function BlueprintPage() {
                   {
                     stat: "100%",
                     subtitle: "PORTABLE ASSET",
-                    label: "100% Untied Ownership",
+                    label: "Yours to Keep",
                   },
                   {
                     stat: "2–3",
                     subtitle: "FINANCE HANDOFF",
-                    label: "Finance Pipeline Integration",
+                    label: "Mortgage Only introduction",
                   },
                 ].map((item, idx) => (
                   <Reveal key={item.label} delay={0.1 + idx * 0.05}>
@@ -491,11 +491,10 @@ function BlueprintPage() {
               INVESTMENT STRUCTURE
             </span>
             <h2 className="font-serif text-[36px] text-[var(--cream)] font-light leading-snug">
-              Flat-fee. No retainers. <span className="italic text-[var(--gold)]">Transparent.</span>
+              Flat-fee. <span className="italic text-[var(--gold)]">Transparent.</span>
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-[var(--cream)]/60 font-light max-w-xl mx-auto">
-              We align our incentives completely with your asset selection. No vendor kickbacks, no
-              hidden percentages, full strategic clarity.
+              Clear, published fees. No vendor kickbacks and no hidden percentages.
             </p>
           </div>
 
@@ -523,17 +522,17 @@ function BlueprintPage() {
                     </div>
                   </div>
                   <p className="text-[13.5px] text-[var(--cream)]/85 pl-2 leading-relaxed mb-6 font-light">
-                    $3,000 retainer to engage. Paid upfront on signing. This forms the operational
-                    resource to architect your master multi-year Portfolio Blueprint.
+                    $3,000 retainer to engage. Paid upfront on signing. Covers your Portfolio
+                    Blueprint engagement.
                   </p>
 
                   {/* Subtle checklist */}
                   <div className="grid sm:grid-cols-2 gap-3 pl-2 pt-4 border-t border-[var(--gold)]/10">
                     {[
-                      "Advanced Suburb Modelling & HAG analysis",
-                      "Structured Borrowing Capacity formulation",
-                      "Locking of the formal Acquisition Brief",
-                      "Immediate off-market channel alerts",
+                      "Suburb modelling & Enterprise Grade Analysis",
+                      "Borrowing capacity & finance pathway",
+                      "Formal Acquisition Brief",
+                      "90-minute strategy walkthrough",
                     ].map((item, idx) => (
                       <div
                         key={idx}
@@ -577,10 +576,10 @@ function BlueprintPage() {
 
                   <div className="grid sm:grid-cols-2 gap-3 pl-2 pt-4 border-t border-[var(--gold)]/10">
                     {[
-                      "Physical multi-property walks & inspections",
-                      "Complete historical/council due diligence",
-                      "Bidding representation & private negotiation",
-                      "Full legal contract liaison to settlement",
+                      "Property search against your Acquisition Brief",
+                      "Due diligence",
+                      "Negotiation and contract",
+                      "Finance structured in parallel with Mortgage Only",
                     ].map((item, idx) => (
                       <div
                         key={idx}
@@ -624,10 +623,10 @@ function BlueprintPage() {
 
                   <div className="grid sm:grid-cols-2 gap-3 pl-2 pt-4 border-t border-[var(--gold)]/10">
                     {[
-                      "Unlimited Brief Adjustments in target areas",
-                      "Continuous macro economic screening",
-                      "Dynamic capital allocation revisions",
-                      "Checkpoints at month 6 & 12 post-settlement",
+                      "Revised against new borrowing capacity",
+                      "Updated for current market conditions",
+                      "Portfolio thesis review before each acquisition",
+                      "Included with your next acquisition fee",
                     ].map((item, idx) => (
                       <div
                         key={idx}
@@ -816,7 +815,7 @@ function BlueprintPage() {
                 <div className="space-y-4">
                   <Eyebrow>COMPARED TO TRADITIONAL ACQUISITION</Eyebrow>
                   <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)]">
-                    Why a documented strategy outcrops <br className="hidden md:inline" />{" "}
+                    Why a documented strategy outperforms <br className="hidden md:inline" />{" "}
                     property-by-property approach.
                   </h2>
                 </div>
@@ -874,11 +873,6 @@ function BlueprintPage() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors duration-500" />
-
-                  {/* Floating Custom HUD Frame Decor */}
-                  <div className="absolute top-4 left-4 text-[10px] font-mono tracking-widest text-[var(--cream)]/40 uppercase">
-                    Portfolio // Arc-4
-                  </div>
                 </div>
               </Reveal>
             </div>
@@ -954,7 +948,7 @@ function BlueprintPage() {
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <a
-                href="https://calendly.com/elevare"
+                href="/booking"
                 className="group inline-flex min-w-[260px] items-center justify-center gap-3 bg-[var(--gold)] px-8 py-4 text-xs font-mono font-bold uppercase tracking-[0.18em] text-[var(--navy-deep)] shadow-[0_12px_40px_rgba(194,162,75,0.25)] transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--gold-soft)]"
                 referrerPolicy="no-referrer"
               >

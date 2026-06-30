@@ -175,4 +175,108 @@
     background: var(--gold);
     opacity: 0.5;
   }
+
+  /* Vexur calendar embed on /booking */
+  .booking-vexur-embed.vexur-widget,
+  .booking-vexur-embed.vexur-widget > .vexur-widget {
+    display: block;
+    width: 100% !important;
+    min-height: 0 !important;
+    max-width: none;
+  }
+
+  /* Vexur chatbot — shell clips launcher when closed; inner widget owns Vexur sizing */
+  .vexur-chatbot-host {
+    --vexur-launcher-width: 184px;
+    --vexur-chat-offset-x: max(16px, env(safe-area-inset-right, 0px));
+    --vexur-chat-offset-y: max(16px, env(safe-area-inset-bottom, 0px));
+    --vexur-chat-panel-width: min(400px, calc(100vw - var(--vexur-chat-offset-x) * 2));
+
+    position: fixed;
+    right: var(--vexur-chat-offset-x);
+    bottom: var(--vexur-chat-offset-y);
+    left: auto;
+    top: auto;
+    z-index: 9999;
+    width: var(--vexur-chat-panel-width);
+    max-width: var(--vexur-chat-panel-width);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: none;
+  }
+
+  .vexur-chatbot-host:not(.vexur-chatbot-host--ready):not(.vexur-chatbot-host--open) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .vexur-chatbot-host.vexur-chatbot-host--ready,
+  .vexur-chatbot-host.vexur-chatbot-host--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .vexur-chatbot-host:not(.vexur-chatbot-host--open) {
+    width: min(var(--vexur-launcher-width), var(--vexur-chat-panel-width));
+    height: 56px;
+    max-height: 56px;
+    min-height: 56px !important;
+    pointer-events: auto;
+  }
+
+  .vexur-chatbot-host.vexur-chatbot-host--open {
+    width: var(--vexur-chat-panel-width);
+    height: auto;
+    max-height: calc(100dvh - var(--vexur-chat-offset-y) * 2);
+    min-height: 0 !important;
+    pointer-events: auto;
+  }
+
+  .vexur-chatbot-host > .vexur-widget {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: auto;
+  }
+
+  /* Anchor full widget to bottom-right so the launcher pill is in view when closed */
+  .vexur-chatbot-host:not(.vexur-chatbot-host--open) > .vexur-widget {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: var(--vexur-chat-panel-width) !important;
+    max-width: var(--vexur-chat-panel-width) !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .vexur-chatbot-host.vexur-chatbot-host--open > .vexur-widget {
+    position: static;
+    width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - var(--vexur-chat-offset-y) * 2);
+  }
+
+  .vexur-chatbot-host .vexur-widget iframe {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: 0;
+    background: transparent;
+  }
+
+  .vexur-chatbot-host .vx-frame,
+  .vexur-chatbot-host .vx-frame-wrap {
+    background: transparent !important;
+  }
 }

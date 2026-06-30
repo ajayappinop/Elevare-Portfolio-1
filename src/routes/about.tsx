@@ -233,9 +233,6 @@ function AboutPage() {
 
                   {/* Geometric watermark layout overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/90 via-transparent to-transparent opacity-80" />
-                  <div className="absolute top-4 left-4 font-mono text-[8px] text-[var(--gold)]/30 uppercase tracking-[0.2em]">
-                    DESIGN SYSTEM ID: ELV-FND
-                  </div>
 
                   {/* Text on Portrait */}
                   <div className="absolute bottom-6 left-6 right-6">
@@ -264,39 +261,20 @@ function AboutPage() {
               {/* Prose bio styled for elite wealth advisory readability */}
               <div className="space-y-6 text-[14px] text-[var(--cream)]/80 leading-relaxed font-light">
                 <p>
-                  Tarun Sanghi’s career spans two decades at the intersection of complex finance
-                  structures and institutional-grade property acquisition. Throughout his career, he
-                  observed a persistent structural gap in the market: traditional buyer's agents
-                  focused purely on a transactional search, while investment strategists delivered
-                  thick theoretical reports with zero path to execution. Tarun founded Elevare to
-                  dismantle this division, establishing an agency where rigorous numerical planning
-                  and street-level execution coexist inside a single, integrated team.
+                  Tarun Sanghi is the founder of Elevare Portfolio and Mortgage Only. His career
+                  spans two decades across finance and property acquisition, built around one
+                  conviction: portfolios are designed, not stumbled into.
                 </p>
                 <p>
-                  Tarun’s conviction is that scalable wealth is designed, not stumbled into. A
-                  single property purchase can be a stroke of luck, but a multi-million-dollar
-                  portfolio requires disciplined, repeatable structures. He rejects the emotional
-                  speculation that often dominates property discussions, insisting that successful
-                  wealth creation behaves like clinical capital allocation. To Tarun, buying
-                  property without a long-term borrowing and asset strategy isn’t investing; it is
-                  merely accumulating disconnected liabilities.
+                  He founded Elevare to bring rigorous planning and execution under one roof — where
+                  every acquisition is driven by a documented Portfolio Blueprint, not ad hoc
+                  property search. Elevare works with serious investors scaling from a first
+                  purchase through to multi-asset portfolios.
                 </p>
                 <p>
-                  This commitment to precision defines Elevare’s operational model. Under Tarun’s
-                  leadership, the firm relies strictly on HTAG-powered quantitative telemetry and
-                  real-time structural analysis rather than subjective speculation. His relationship
-                  to data is built on complete transparency and accountability; every step of the
-                  acquisition process is tested against the strategic milestones established in the
-                  investor's Portfolio Blueprint.
-                </p>
-                <p>
-                  Elevare works exclusively with serious, strategy-minded investors. This includes
-                  high-net-worth professionals scaling multi-million-dollar portfolios,
-                  mid-portfolio investors who have encountered lending or structural roadblocks, and
-                  first-time buyers determined to plan their first purchase around multi-asset
-                  scale. Tarun’s approach is reserved for clients who value data-driven reality,
-                  architectural discipline, and are prepared to exit the transactional cycle in
-                  favor of permanent wealth architecture.
+                  Under his leadership, the firm relies on enterprise-grade quantitative analysis
+                  rather than speculation. Every step of the acquisition process is tested against
+                  the milestones set out in your Blueprint.
                 </p>
               </div>
 
@@ -315,10 +293,6 @@ function AboutPage() {
                   />
                   <path d="M12,14 C32,13 40,16 65,10" strokeLinecap="round" />
                 </svg>
-                <div className="h-5 w-[1px] bg-[var(--gold)]/20" />
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--cream)]/40 font-semibold">
-                  Tarun Sanghi — Principal
-                </span>
               </div>
             </div>
           </div>
@@ -390,10 +364,10 @@ function AboutPage() {
                     <Target className="w-12 h-12 text-[#f59e0b]" />
                   </div>
                   <h3 className="font-serif text-[18px] tracking-tight text-[var(--cream-section-foreground)] mb-4 font-semibold">
-                    HTAG-Powered Data
+                    Enterprise Grade Analysis
                   </h3>
                   <p className="text-[14px] text-[var(--cream-section-subtle)] leading-relaxed font-light mb-8">
-                    HTAG-powered data — every suburb shortlist is backed by institutional-grade
+                    Enterprise Grade Analysis — every suburb shortlist is backed by institutional-grade
                     analytics, not gut feel or an outdated median.
                   </p>
                 </div>
@@ -475,7 +449,7 @@ function AboutPage() {
                   className="group inline-flex items-center gap-4 text-[11px] tracking-[0.2em] font-mono uppercase text-[var(--gold)] pb-1.5 border-b border-[var(--gold)]/20 hover:border-[var(--gold)] transition-all duration-300"
                   referrerPolicy="no-referrer"
                 >
-                  <span>MORTGAGE ONLY SPECIALIST</span>
+                  <span>Mortgage Only</span>
                   <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" />
                 </a>
               </div>
@@ -497,7 +471,7 @@ function AboutPage() {
                       WHAT SHOULD I DO?
                     </p>
                     <p className="text-[11.5px] text-[var(--cream)]/60 font-light mt-1">
-                      Asset brief definition, geographic shortlisting, surgical negotiation.
+                      Strategy, search, due diligence, and negotiation.
                     </p>
                   </div>
                 </div>
@@ -520,8 +494,7 @@ function AboutPage() {
                       HOW DO I STRUCTURE & FUND IT?
                     </p>
                     <p className="text-[11.5px] text-[var(--cream)]/60 font-light mt-1">
-                      Custom structural debt strategy, borrowing capacity maximization, tier-1
-                      lending.
+                      Borrowing capacity, lender strategy, and equity planning across your portfolio.
                     </p>
                   </div>
                 </div>
@@ -550,18 +523,14 @@ function AboutPage() {
 
           <Reveal delay={0.15}>
             <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)] font-light">
-              Begin your portfolio masterplan
-              <span className="block italic text-[var(--gold)] mt-1 font-light">
-                with total alignment.
-              </span>
+              Begin your Blueprint engagement.
             </h2>
           </Reveal>
 
           <Reveal delay={0.3}>
             <p className="mt-6 text-[14px] text-[var(--cream)]/75 leading-relaxed max-w-lg mx-auto font-light">
-              Book your qualifying call directly with our team. We will review your current
-              investment positions, pinpoint immediate borrowing bottlenecks, and outline the exact
-              roadmap to a Portfolio Blueprint.
+              Book a free 30-minute Qualifying Call. We&apos;ll assess fit, answer your questions,
+              and walk you through how the Blueprint engagement works.
             </p>
           </Reveal>
 
@@ -570,7 +539,7 @@ function AboutPage() {
             className="mt-10 flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto"
           >
             <a
-              href="https://calendly.com/elevare"
+              href="/booking"
               className="inline-flex items-center justify-center gap-3 bg-[var(--gold)] text-[var(--navy-deep)] px-5 py-4 text-xs font-mono tracking-[0.18em] uppercase font-bold hover:bg-[var(--gold-soft)] transition-colors rounded shadow-md group"
               referrerPolicy="no-referrer"
             >
