@@ -63,47 +63,47 @@ function BookingPage() {
         </SectionContainer>
       </section>
 
-      <section className={`${sectionClass} -mt-2`}>
-        <SectionContainer>
-          <div className="grid items-start gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(340px,480px)] xl:gap-12">
-            <div className="space-y-10">
-              <div className={`space-y-6 ${bodyMutedClass}`}>
-                <Reveal>
-                  <p>
-                    The Qualifying Call is a 30-minute conversation to assess fit and answer your
-                    questions. We&apos;ll cover your portfolio goals, your current position, and how
-                    the Blueprint engagement would work in your situation.
-                  </p>
+      <section className={`${sectionClass} -mt-2 overflow-x-hidden`}>
+        <SectionContainer className="max-w-7xl">
+          <div className="space-y-12">
+            <div className="mx-auto w-full max-w-5xl">
+              <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-x-12 lg:gap-y-10">
+                <Reveal className="min-w-0">
+                  <div className={`space-y-6 ${bodyMutedClass}`}>
+                    <p>
+                      The Qualifying Call is a 30-minute conversation to assess fit and answer your
+                      questions. We&apos;ll cover your portfolio goals, your current position, and how
+                      the Blueprint engagement would work in your situation.
+                    </p>
+                    <p>
+                      If we&apos;re the right partner for you, we&apos;ll walk you through next steps.
+                      If we&apos;re not, we&apos;ll tell you what we&apos;d do instead. Either way,
+                      you leave the call with clarity.
+                    </p>
+                  </div>
                 </Reveal>
-                <Reveal delay={0.1}>
-                  <p>
-                    If we&apos;re the right partner for you, we&apos;ll walk you through next steps.
-                    If we&apos;re not, we&apos;ll tell you what we&apos;d do instead. Either way,
-                    you leave the call with clarity.
-                  </p>
+
+                <Reveal delay={0.1} className="min-w-0 w-full">
+                  <div className="h-full rounded-2xl border border-[var(--gold)]/15 bg-[var(--navy-deep)]/50 p-6 backdrop-blur-sm md:p-8">
+                    <h3 className="font-serif text-xl text-[var(--cream)]">
+                      What you&apos;ll leave the call with
+                    </h3>
+                    <ul className="mt-6 space-y-4">
+                      {outcomes.map((item) => (
+                        <li key={item} className={`flex items-start gap-3 ${bodyClass}`}>
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10">
+                            <Check className="h-3 w-3 text-[var(--gold)]" aria-hidden />
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </Reveal>
               </div>
-
-              <Reveal delay={0.2}>
-                <div className="rounded-2xl border border-[var(--gold)]/15 bg-[var(--navy-deep)]/50 p-6 backdrop-blur-sm md:p-8">
-                  <h3 className="font-serif text-xl text-[var(--cream)]">
-                    What you&apos;ll leave the call with
-                  </h3>
-                  <ul className="mt-6 space-y-4">
-                    {outcomes.map((item, i) => (
-                      <li key={item} className={`flex items-start gap-3 ${bodyClass}`}>
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10">
-                          <Check className="h-3 w-3 text-[var(--gold)]" aria-hidden />
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
             </div>
 
-            <Reveal delay={0.15} className="xl:sticky xl:top-28">
+            <Reveal delay={0.15} className="w-full min-w-0">
               <VexurWidget params={VEXUR_CALENDAR_PARAMS} className="booking-vexur-embed" />
             </Reveal>
           </div>

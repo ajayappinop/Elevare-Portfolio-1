@@ -178,11 +178,16 @@
 
   /* Vexur calendar embed on /booking */
   .booking-vexur-embed.vexur-widget,
-  .booking-vexur-embed.vexur-widget > .vexur-widget {
+  .booking-vexur-embed.vexur-widget > .vexur-widget,
+  .booking-vexur-embed .vx-frame-wrap,
+  .booking-vexur-embed .vx-frame,
+  .booking-vexur-embed iframe {
     display: block;
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     min-height: 0 !important;
-    max-width: none;
+    box-sizing: border-box;
   }
 
   /* Vexur chatbot — shell clips launcher when closed; inner widget owns Vexur sizing */
