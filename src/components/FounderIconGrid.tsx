@@ -43,9 +43,14 @@ function FounderIconCard({
   );
 }
 
-function FounderGridAccent() {
+function FounderGridAccent({ position = "left" }: { position?: "left" | "right" }) {
+  const marginClass =
+    position === "left"
+      ? "relative -ml-1.5 w-3 shrink-0 self-stretch sm:-ml-2"
+      : "relative -ml-1.5 -mr-1.5 w-3 shrink-0 self-stretch sm:-ml-2 sm:-mr-2";
+
   return (
-    <div className="relative -mr-1.5 w-3 shrink-0 self-stretch sm:-mr-2">
+    <div className={marginClass}>
       <div
         className="absolute top-2 bottom-2 left-1/2 w-px -translate-x-1/2"
         style={{
@@ -58,7 +63,13 @@ function FounderGridAccent() {
   );
 }
 
-export function FounderIconGrid({ variant = "default" }: { variant?: "default" | "minimal" }) {
+export function FounderIconGrid({
+  variant = "default",
+  accentPosition = "left",
+}: {
+  variant?: "default" | "minimal";
+  accentPosition?: "left" | "right";
+}) {
   const items = [
     { icon: UserStar, label: "Expert leadership" },
     { icon: ShieldCheck, label: "Trusted guidance" },
@@ -66,15 +77,29 @@ export function FounderIconGrid({ variant = "default" }: { variant?: "default" |
     { icon: Users, label: "Investor focus" },
   ] as const;
 
+  const grid = (
+    <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-2 sm:gap-2.5">
+      {items.map(({ icon, label }) => (
+        <FounderIconCard key={label} icon={icon} variant={variant} />
+      ))}
+    </div>
+  );
+
+  const accent = <FounderGridAccent position={accentPosition} />;
+
   return (
     <div className="flex h-full min-h-0 gap-2.5 p-3 sm:gap-3 sm:p-4">
-      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-2 sm:gap-2.5">
-        {items.map(({ icon, label }) => (
-          <FounderIconCard key={label} icon={icon} variant={variant} />
-        ))}
-      </div>
-
-      <FounderGridAccent />
+      {accentPosition === "left" ? (
+        <>
+          {accent}
+          {grid}
+        </>
+      ) : (
+        <>
+          {grid}
+          {accent}
+        </>
+      )}
     </div>
   );
 }

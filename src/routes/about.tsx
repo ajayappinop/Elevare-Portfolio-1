@@ -209,7 +209,7 @@ function AboutPage() {
             {/* Left Column: Founder icon grid */}
             <div className="md:col-span-5 flex justify-center">
               <Reveal className="relative mx-auto aspect-square w-full max-w-[380px]">
-                <FounderIconGrid variant="minimal" />
+                <FounderIconGrid variant="minimal" accentPosition="right" />
               </Reveal>
             </div>
 
