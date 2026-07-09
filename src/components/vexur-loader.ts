@@ -5,6 +5,18 @@ installVexurEmbedPatches();
 
 let loaderPromise: Promise<void> | null = null;
 
+type VexurWidgetElement = HTMLDivElement & {
+  __vexurV2Mounted?: boolean;
+};
+
+export function resetVexurWidgetMount(element: VexurWidgetElement) {
+  element.removeAttribute("data-vexur-mounted");
+  element.removeAttribute("data-vx-runtime-mounted");
+  element.removeAttribute("data-vx-mount-id");
+  element.__vexurV2Mounted = false;
+  element.innerHTML = "";
+}
+
 export function loadVexurScript() {
   if (typeof document === "undefined") {
     return Promise.resolve();

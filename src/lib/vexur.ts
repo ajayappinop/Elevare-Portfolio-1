@@ -1,6 +1,8 @@
 /** Vexur embed loader — shared calendar and chat widgets */
+export const VEXUR_EMBED_ORIGIN = "https://embed.vexur.com.au";
+
 export const VEXUR_LOADER = {
-  src: "https://embed.vexur.com.au/v1.1.6/loader.js",
+  src: `${VEXUR_EMBED_ORIGIN}/v1.1.6/loader.js`,
   integrity:
     "sha384-VpFV0diwUp4nmy9HQ621vA+Lq66YUi6gcMEShp/o0WVEUebsXh8Vk5u3yh24kvSw",
 } as const;
@@ -8,7 +10,11 @@ export const VEXUR_LOADER = {
 export const VEXUR_AGENT_ID =
   import.meta.env.VITE_VEXUR_AGENT_ID?.trim() || "7ccf0d2e-fb28-41a8-b5bb-5dd60bc0c0d7";
 
-export const VEXUR_CALENDAR_PARAMS = {
+/** Latest calendar embed snippet from Vexur Marketing Lab (Jul 5, 2026). */
+export const VEXUR_CALENDAR_VERSION =
+  import.meta.env.VITE_VEXUR_CALENDAR_V?.trim() || "2026-07-05T12:34:29.671886+00:00";
+
+export const VEXUR_CALENDAR_PARAMS: Record<string, string> = {
   "data-widget": "calendar",
   "data-agent": VEXUR_AGENT_ID,
   "data-loader": "v2",
@@ -19,8 +25,8 @@ export const VEXUR_CALENDAR_PARAMS = {
   "data-vx-no-fallback": "true",
   "data-vx-param-calendar-widget-build-id": "calendar-cd3750f0",
   "data-vx-param-renderer": "calendar-render-v2",
-  "data-vx-param-v": "2026-06-16T03:05:58.028352+00:00",
-} as const;
+  "data-vx-param-v": VEXUR_CALENDAR_VERSION,
+};
 
 export const VEXUR_CHATBOT_PARAMS = {
   "data-widget": "chatbot",

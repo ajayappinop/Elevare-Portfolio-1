@@ -1,3 +1,4 @@
+import { FounderIconGrid } from "@/components/FounderIconGrid";
 import { Navbar } from "@/components/Navbar";
 import {
   bodyClass,
@@ -26,7 +27,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const founderImg = "/assets/founder-portrait.png";
 const property1 = "/assets/property-1.png";
 
 export const Route = createFileRoute("/about")({
@@ -204,51 +204,17 @@ function AboutPage() {
 
       {/* SECTION 4 - TARUN SANGHI (FOUNDER) */}
       <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--navy)]">
-        {/* Subtle geometric framing vector background */}
-        <div className="absolute -top-[10%] -left-[10%] w-[45%] aspect-square rounded-full border border-[var(--gold)]-[0.03] pointer-events-none" />
-
         <div className="mx-auto max-w-6xl px-6 relative z-10">
-          <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Portrait Container with premium metrics framing */}
-            <div className="md:col-span-5 flex justify-center md:sticky md:top-24">
-              <Reveal className="relative w-full max-w-[380px] aspect-[4/5] p-3 border border-[var(--gold)]/20 shadow-2xl bg-[var(--navy-deep)] rounded">
-                {/* Micro engineering corner brackets */}
-                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[var(--gold)]/40 rounded-tl" />
-                <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[var(--gold)]/40 rounded-tr" />
-                <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[var(--gold)]/40 rounded-bl" />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[var(--gold)]/40 rounded-br" />
-
-                <div className="relative w-full h-full overflow-hidden bg-[var(--navy)]">
-                  {founderImg ? (
-                    <img
-                      src={founderImg}
-                      alt="Tarun Sanghi, Founder of Elevare Portfolio"
-                      className="w-full h-full object-cover grayscale brightness-[0.8] hover:grayscale-0 hover:brightness-100 transition-all duration-700"
-                      onError={(e) => {
-                        // Fallback in case portrait doesn't load
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : null}
-
-                  {/* Geometric watermark layout overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/90 via-transparent to-transparent opacity-80" />
-
-                  {/* Text on Portrait */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <p className="font-serif text-xl text-[var(--cream)] tracking-tight font-medium">
-                      Tarun Sanghi
-                    </p>
-                    <p className="text-[10px] uppercase tracking-widest font-mono text-[var(--gold)] mt-0.5">
-                      Founder & Allocator
-                    </p>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Founder icon grid */}
+            <div className="md:col-span-5 flex justify-center">
+              <Reveal className="relative mx-auto aspect-square w-full max-w-[380px]">
+                <FounderIconGrid variant="minimal" />
               </Reveal>
             </div>
 
             {/* Right Column: Confident, method-led Bio */}
-            <div className="md:col-span-7 space-y-8 md:pl-4">
+            <div className="md:col-span-7 space-y-8">
               <div className="space-y-3">
                 <Eyebrow>THE FOUNDER</Eyebrow>
                 <h2 className="font-serif text-[36px] leading-tight text-[var(--cream)] font-light">
@@ -276,23 +242,6 @@ function AboutPage() {
                   rather than speculation. Every step of the acquisition process is tested against
                   the milestones set out in your Blueprint.
                 </p>
-              </div>
-
-              {/* Sleek footer linear accent */}
-              <div className="pt-6 flex items-center gap-6">
-                <svg
-                  className="w-20 h-auto text-[var(--gold)]/60"
-                  viewBox="0 0 100 30"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                >
-                  <path
-                    d="M10,20 C25,12 35,4 48,18 C58,28 68,6 74,15 C80,24 86,18 94,10"
-                    strokeLinecap="round"
-                  />
-                  <path d="M12,14 C32,13 40,16 65,10" strokeLinecap="round" />
-                </svg>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import { VexurWidget } from "@/components/VexurWidget";
+import { BookingCalendarEmbed } from "@/components/BookingCalendarEmbed";
 import {
   bodyClass,
   bodyMutedClass,
@@ -14,8 +14,6 @@ import {
 } from "@/components/brand";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
-
-import { VEXUR_CALENDAR_PARAMS } from "@/lib/vexur";
 
 export const Route = createFileRoute("/booking")({
   component: BookingPage,
@@ -104,7 +102,7 @@ function BookingPage() {
             </div>
 
             <Reveal delay={0.15} className="w-full min-w-0">
-              <VexurWidget params={VEXUR_CALENDAR_PARAMS} className="booking-vexur-embed" />
+              <BookingCalendarEmbed />
             </Reveal>
           </div>
         </SectionContainer>

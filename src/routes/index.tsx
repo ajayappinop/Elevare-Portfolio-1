@@ -3,10 +3,10 @@ import { Eyebrow, pageShellClass, Reveal, SectionDivider } from "@/components/br
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { FounderIconGrid } from "@/components/FounderIconGrid";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const heroImg = "/assets/hero-architecture.png";
-const founderImg = "/assets/founder-portrait.png";
 const blueprintImg = "/assets/blueprint-abstract.png";
 const property1 = "/assets/property-1.png";
 const property2 = "/assets/property-2.png";
@@ -56,13 +56,7 @@ function Hero() {
 
   const [current, setCurrent] = useState(0);
 
-  const slides = [
-    { img: heroImg, caption: "Signature Architectural Acquisition" },
-    { img: property1, caption: "Infill Scarcity · Brunswick, VIC" },
-    { img: property2, caption: "Inner-City Renter Pool · West End, QLD" },
-    { img: property3, caption: "Coastal Capital Growth · North Fremantle, WA" },
-    { img: property4, caption: "Heritage Stock Constraints · Newtown, NSW" },
-  ];
+  const slides = [heroImg, property1, property2, property3, property4];
 
   const handlePrev = () => {
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -90,7 +84,7 @@ function Hero() {
         <AnimatePresence mode="popLayout">
           <motion.img
             key={current}
-            src={slides[current].img}
+            src={slides[current]}
             alt="Elevare luxury architecture background"
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
@@ -103,14 +97,6 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-deep)]/90 via-[var(--navy-deep)]/60 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(rgba(194,162,123,0.06)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
       </motion.div>
-
-      {/* Slide Caption - Bottom Left */}
-      <div className="absolute bottom-8 left-6 sm:left-12 z-20 flex items-center gap-3">
-        <div className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-        <span className="text-[10px] tracking-[0.25em] uppercase font-mono text-[var(--cream)]/60">
-          Background: {slides[current].caption}
-        </span>
-      </div>
 
       {/* Right Vertical Slider Navigation */}
       <div className="absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-6 z-20">
@@ -749,44 +735,44 @@ function Founder() {
   return (
     <section id="founder" className="py-28 md:py-40 bg-[var(--navy-deep)]">
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12 items-center">
-        <div className="md:col-span-5">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative aspect-[4/5] overflow-hidden group"
-          >
-            <motion.img
-              src={founderImg}
-              alt="Tarun Sanghi, Founder of Elevare Portfolio"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/60 via-transparent to-transparent" />
-            <div className="absolute inset-0 ring-1 ring-[var(--gold)]/20" />
-            <div className="absolute -bottom-px -right-px w-20 h-20 border-b-2 border-r-2 border-[var(--gold)]" />
-          </motion.div>
-        </div>
-        <div className="md:col-span-7 md:pl-8">
+        <div className="md:col-span-7 md:order-1 md:pr-8">
           <Eyebrow>Founder</Eyebrow>
-          <h2 className="font-serif text-[36px] leading-[1.1] mt-6 text-[var(--cream)]">
-            Led by <span className="italic text-[var(--gold)]">Tarun Sanghi.</span>
+
+          <h2 className="mt-6 font-serif text-[36px] leading-[1.1] text-[var(--cream)] font-light md:text-[42px]">
+            Led by
           </h2>
-          <p className="mt-8 text-[var(--cream)]/75 leading-relaxed text-[14px]">
+          <p className="font-serif text-[36px] leading-[1.1] italic text-[var(--gold)] font-light md:text-[42px]">
+            Tarun Sanghi.
+          </p>
+          <div className="mt-4 h-px w-12 bg-[var(--gold)]" />
+
+          <p className="mt-8 max-w-xl text-[14px] leading-relaxed text-[var(--cream)]/75">
             Tarun is the founder of Elevare Portfolio and Mortgage Only — building an ecosystem that
             helps Australians create generational wealth through property. Two decades across
             finance and acquisition, structured around one conviction: portfolios are designed, not
             stumbled into.
           </p>
-          <a
-            href="/about"
-            className="inline-block mt-10 text-sm tracking-[0.2em] uppercase text-[var(--gold)] border-b border-[var(--gold)]/40 pb-2 hover:border-[var(--gold)]"
+
+          <Link
+            to="/about"
+            className="mt-10 inline-flex items-center gap-3 border border-[var(--gold)]/60 px-6 py-3 text-xs uppercase tracking-[0.2em] text-[var(--gold)] transition-colors hover:border-[var(--gold)] hover:bg-[var(--gold)]/5"
           >
-            About Tarun →
-          </a>
+            About Us
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
+
+        <div className="md:col-span-5 md:order-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="group relative mx-auto aspect-square w-full max-w-[380px] overflow-hidden bg-[var(--navy-deep)]"
+          >
+            <FounderIconGrid />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-[var(--gold)]/20" />
+          </motion.div>
         </div>
       </div>
     </section>
