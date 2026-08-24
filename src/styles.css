@@ -156,12 +156,44 @@
     border-color: var(--color-border);
   }
 
+  html {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    min-height: 100dvh;
+  }
+
+  #root {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+
+  /* Stop iOS Safari zooming the whole page when focusing form fields */
+  @media (max-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
   }
 
   .font-serif {
@@ -195,7 +227,7 @@
     --vexur-launcher-width: 184px;
     --vexur-chat-offset-x: max(16px, env(safe-area-inset-right, 0px));
     --vexur-chat-offset-y: max(16px, env(safe-area-inset-bottom, 0px));
-    --vexur-chat-panel-width: min(400px, calc(100vw - var(--vexur-chat-offset-x) * 2));
+    --vexur-chat-panel-width: min(400px, calc(100% - var(--vexur-chat-offset-x) * 2));
 
     position: fixed;
     right: var(--vexur-chat-offset-x);

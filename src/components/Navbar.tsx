@@ -42,8 +42,11 @@ export function Navbar() {
           ? "bg-[var(--navy-deep)]/80 backdrop-blur-md border-b border-[var(--gold)]/10"
           : "bg-transparent"
       }`}
+      style={{
+        paddingTop: "env(safe-area-inset-top, 0px)",
+      }}
     >
-      <div className="mx-auto max-w-6xl px-6 py-6 flex items-center justify-between">
+      <div className="mx-auto flex w-full min-w-0 max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-6">
         <Link
           to="/"
           className="font-serif text-lg sm:text-xl tracking-wide text-[var(--cream)] flex items-center gap-2 min-w-0"
@@ -86,7 +89,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="bg-[var(--navy-deep)] border-[var(--gold)]/10 w-[min(100vw-2rem,20rem)] text-[var(--cream)] [&>button]:text-[var(--cream)]"
+              className="bg-[var(--navy-deep)] border-[var(--gold)]/10 w-[min(20rem,calc(100%-1.5rem))] max-w-full text-[var(--cream)] [&>button]:text-[var(--cream)]"
             >
               <SheetHeader>
                 <SheetTitle className="text-[var(--cream)] font-serif text-left text-xl">

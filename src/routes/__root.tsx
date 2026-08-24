@@ -72,7 +72,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col bg-[var(--navy)]">
+      <div className="flex min-h-dvh min-w-0 flex-col overflow-x-clip bg-[var(--navy)]">
         <Outlet />
         <SiteFooter />
       </div>

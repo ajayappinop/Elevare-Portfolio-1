@@ -7,8 +7,8 @@ const logo = "/assets/logo.png";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[var(--gold)]/15 py-16 bg-[var(--navy-deep)] relative z-10">
-      <div className="mx-auto max-w-6xl px-6">
+    <footer className="relative z-10 border-t border-[var(--gold)]/15 bg-[var(--navy-deep)] py-16 pb-[max(4rem,calc(env(safe-area-inset-bottom)+4rem))]">
+      <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2 space-y-6">
             <Link to="/" className="font-serif text-xl text-[var(--cream)] flex items-center gap-2">

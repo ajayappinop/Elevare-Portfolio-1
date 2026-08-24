@@ -156,7 +156,7 @@ function BlueprintPage() {
 
       {/* SECTION 1 - HEADER */}
       <section className="relative min-h-[60vh] flex items-center justify-center pt-32 pb-20 bg-[var(--navy-deep)]">
-        <div className="mx-auto max-w-4xl px-6 text-center space-y-6">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center space-y-6">
           <Reveal>
             <Eyebrow>THE FOUNDATION OF EVERY ENGAGEMENT</Eyebrow>
           </Reveal>
@@ -178,7 +178,7 @@ function BlueprintPage() {
 
       {/* SECTION 2 - WHAT IT IS */}
       <section className="py-24 md:py-32 bg-[var(--navy)]">
-        <div className="mx-auto max-w-3xl px-6">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Reveal>
             <h2 className="font-serif text-[36px] text-[var(--cream)] font-light leading-snug">
               Not a property report.{" "}
@@ -201,7 +201,7 @@ function BlueprintPage() {
 
       {/* SECTION 3 - WHAT'S INSIDE */}
       <section className="py-24 md:py-32 bg-[var(--cream-section)] overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Top block layout from screenshot */}
           <div className="flex flex-col sm:flex-row items-stretch gap-6 lg:gap-10 relative mb-16 h-[400px]">
             {/* Rotated Left Label */}
@@ -367,7 +367,7 @@ function BlueprintPage() {
 
       {/* SECTION 4 - HOW IT'S DELIVERED */}
       <section className="py-24 md:py-32 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10 relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
           <Reveal>
             <Eyebrow>DELIVERY FRAMEWORK</Eyebrow>
           </Reveal>
@@ -451,7 +451,7 @@ function BlueprintPage() {
                   </div>
                   <Link
                     to="/booking"
-                    className="inline-flex w-full items-center justify-between bg-[var(--cream)] px-6 py-4 text-[11px] font-mono uppercase tracking-[0.18em] text-[var(--navy-deep)] transition-colors hover:bg-[var(--gold-soft)]"
+                    className="inline-flex w-full items-center justify-between bg-[var(--cream)] px-4 py-4 text-[11px] font-mono uppercase tracking-[0.08em] text-[var(--navy-deep)] transition-colors hover:bg-[var(--gold-soft)] sm:px-6 sm:tracking-[0.18em]"
                   >
                     <span>Book a Qualifying Call</span>
                     <ArrowRight className="h-4 w-4" />
@@ -485,7 +485,7 @@ function BlueprintPage() {
         {/* Subtle decorative grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#c99d4e08_1px,transparent_1px),linear-gradient(to_bottom,#c99d4e08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none select-none" />
 
-        <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
             <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--gold)] uppercase block mb-3">
               INVESTMENT STRUCTURE
@@ -807,7 +807,7 @@ function BlueprintPage() {
 
       {/* SECTION 5 - WHY IT WORKS */}
       <section className="py-24 md:py-32 bg-[var(--navy-deep)] border-t border-[var(--gold)]/10">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
             {/* Left Column: Heading & Redesigned List */}
             <div className="lg:col-span-7 space-y-12">
@@ -897,11 +897,11 @@ function BlueprintPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(194,162,75,0.12)_0%,_transparent_65%)]" />
         </div>
 
-        <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-6xl px-6">
+        <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="gold-rule" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/20 bg-[var(--gold)]/5 px-4 py-1.5">
@@ -949,7 +949,7 @@ function BlueprintPage() {
             >
               <a
                 href="/booking"
-                className="group inline-flex min-w-[260px] items-center justify-center gap-3 bg-[var(--gold)] px-8 py-4 text-xs font-mono font-bold uppercase tracking-[0.18em] text-[var(--navy-deep)] shadow-[0_12px_40px_rgba(194,162,75,0.25)] transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--gold-soft)]"
+                className="group inline-flex w-full min-w-0 max-w-full items-center justify-center gap-3 bg-[var(--gold)] px-5 py-4 text-center text-xs font-mono font-bold uppercase tracking-[0.08em] text-[var(--navy-deep)] shadow-[0_12px_40px_rgba(194,162,75,0.25)] transition-all duration-300 hover:scale-[1.02] hover:bg-[var(--gold-soft)] sm:w-auto sm:min-w-[260px] sm:px-8 sm:tracking-[0.18em]"
                 referrerPolicy="no-referrer"
               >
                 <span>Book a Qualifying Call</span>
@@ -957,7 +957,7 @@ function BlueprintPage() {
               </a>
               <Link
                 to="/booking"
-                className="inline-flex min-w-[260px] items-center justify-center gap-2 border border-[var(--cream)]/15 bg-[var(--navy)]/40 px-8 py-4 text-xs font-mono uppercase tracking-[0.18em] text-[var(--cream)] backdrop-blur-sm transition-colors hover:border-[var(--gold)]/40 hover:text-[var(--gold)]"
+                className="inline-flex w-full min-w-0 max-w-full items-center justify-center gap-2 border border-[var(--cream)]/15 bg-[var(--navy)]/40 px-5 py-4 text-center text-xs font-mono uppercase tracking-[0.08em] text-[var(--cream)] backdrop-blur-sm transition-colors hover:border-[var(--gold)]/40 hover:text-[var(--gold)] sm:w-auto sm:min-w-[260px] sm:px-8 sm:tracking-[0.18em]"
               >
                 View booking details
               </Link>

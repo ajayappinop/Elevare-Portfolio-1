@@ -58,12 +58,12 @@ function AboutPage() {
 
       {/* SECTION 1 - HEADER */}
       <section className="relative min-h-[60vh] flex items-center justify-center pt-32 pb-20 bg-[var(--navy-deep)]">
-        <div className="mx-auto max-w-4xl px-6 text-center space-y-6">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center space-y-6">
           <Reveal>
             <Eyebrow>ABOUT ELEVARE</Eyebrow>
           </Reveal>
           <Reveal delay={0.2}>
-            <h1 className="font-serif text-[48px] sm:text-[64px] leading-[1.05] tracking-tight text-[var(--cream)] font-light">
+            <h1 className="font-serif text-[clamp(2rem,7vw,4rem)] font-light leading-[1.05] tracking-tight text-balance text-[var(--cream)]">
               Built for investors with <br />
               <span className="italic text-[var(--gold)]">portfolio ambition.</span>
             </h1>
@@ -84,7 +84,7 @@ function AboutPage() {
         <div className="absolute -left-64 top-1/2 w-96 h-[1px] bg-[var(--gold)]/10 rotate-45 select-none pointer-events-none" />
         <div className="absolute -right-64 top-1/3 w-96 h-[1px] bg-[var(--gold)]/10 -rotate-45 select-none pointer-events-none" />
 
-        <div className="mx-auto max-w-5xl px-6 relative z-10">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Editorial Pillar info */}
             <div className="md:col-span-4 space-y-4 md:sticky md:top-28">
@@ -143,7 +143,7 @@ function AboutPage() {
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-6 relative z-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content Block */}
             <div className="space-y-8">
@@ -204,7 +204,7 @@ function AboutPage() {
 
       {/* SECTION 4 - TARUN SANGHI (FOUNDER) */}
       <section className="py-24 md:py-32 relative overflow-hidden bg-[var(--navy)]">
-        <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Column: Founder icon grid */}
             <div className="md:col-span-5 flex justify-center">
@@ -363,7 +363,7 @@ function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy)]/80 via-[var(--navy-deep)]/80 to-[var(--navy)]/90" />
         </div>
 
-        <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
           <div className="border border-[var(--gold)]/15 bg-[var(--navy-deep)]/50 backdrop-blur-lg rounded-2xl overflow-hidden grid lg:grid-cols-12 shadow-2xl">
             {/* Left Narrative Block */}
             <div className="lg:col-span-6 p-8 md:p-12 lg:p-16 flex flex-col justify-between space-y-8 bg-[var(--navy-deep)]/30 border-r border-[var(--gold)]/10">
@@ -460,7 +460,7 @@ function AboutPage() {
         id="booking"
         className="py-24 text-center relative overflow-hidden bg-[var(--navy-deep)]"
       >
-        <div className="mx-auto max-w-3xl px-6 relative z-10">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 relative z-10">
           <Reveal>
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-[var(--gold)]/5 rounded-full border border-[var(--gold)]/15">
               <Sparkles className="w-3.5 h-3.5 text-[var(--gold)]" />
@@ -489,7 +489,7 @@ function AboutPage() {
           >
             <a
               href="/booking"
-              className="inline-flex items-center justify-center gap-3 bg-[var(--gold)] text-[var(--navy-deep)] px-5 py-4 text-xs font-mono tracking-[0.18em] uppercase font-bold hover:bg-[var(--gold-soft)] transition-colors rounded shadow-md group"
+              className="inline-flex w-full items-center justify-center gap-3 rounded bg-[var(--gold)] px-5 py-4 text-center text-xs font-mono font-bold uppercase tracking-[0.08em] text-[var(--navy-deep)] shadow-md transition-colors hover:bg-[var(--gold-soft)] group sm:tracking-[0.18em]"
               referrerPolicy="no-referrer"
             >
               <span>Book a Qualifying Call</span>
@@ -497,7 +497,7 @@ function AboutPage() {
             </a>
             <Link
               to="/"
-              className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 text-[var(--cream)] px-8 py-4 text-xs font-mono tracking-[0.18em] uppercase font-bold transition-colors rounded"
+              className="inline-flex w-full items-center justify-center gap-3 rounded border border-white/10 bg-white/5 px-5 py-4 text-center text-xs font-mono font-bold uppercase tracking-[0.08em] text-[var(--cream)] transition-colors hover:bg-white/10 sm:px-8 sm:tracking-[0.18em]"
             >
               Back to Home
             </Link>

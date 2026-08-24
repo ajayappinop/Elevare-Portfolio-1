@@ -40,7 +40,7 @@ function CTAButton({ className = "" }: { className?: string }) {
   return (
     <a
       href="#contact"
-      className={`inline-flex items-center gap-3 bg-[var(--gold)] text-[var(--navy-deep)] px-8 py-4 text-sm tracking-[0.18em] uppercase font-medium hover:bg-[var(--gold-soft)] transition-colors ${className}`}
+      className={`inline-flex max-w-full items-center justify-center gap-2 bg-[var(--gold)] px-5 py-3.5 text-center text-xs uppercase tracking-[0.08em] font-medium text-[var(--navy-deep)] transition-colors hover:bg-[var(--gold-soft)] sm:gap-3 sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.18em] ${className}`}
     >
       {CTA_LABEL}
       <span aria-hidden>→</span>
@@ -98,15 +98,15 @@ function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(194,162,123,0.06)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
       </motion.div>
 
-      {/* Right Vertical Slider Navigation */}
-      <div className="absolute right-6 sm:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-6 z-20">
+      {/* Slider navigation: bottom on small screens so it never overlaps hero copy */}
+      <div className="absolute z-20 flex items-center gap-4 max-md:bottom-6 max-md:left-1/2 max-md:-translate-x-1/2 max-md:flex-row md:right-12 md:top-1/2 md:-translate-y-1/2 md:flex-col md:items-center md:gap-6">
         {/* Dynamic Indicator Number */}
         <div className="text-[11px] font-mono tracking-[0.2em] text-[var(--gold)]">
           0{current + 1}
         </div>
 
         {/* Vertical Progress Line with Active Notch */}
-        <div className="relative w-[1px] h-24 bg-[var(--gold)]/20 rounded-full overflow-hidden">
+        <div className="relative hidden h-24 w-[1px] overflow-hidden rounded-full bg-[var(--gold)]/20 md:block">
           <motion.div
             className="absolute top-0 left-0 w-[1px] bg-[var(--gold)]"
             initial={false}
@@ -127,7 +127,7 @@ function Hero() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="mt-0 flex flex-row gap-3 md:mt-4 md:flex-col">
           <button
             onClick={handlePrev}
             aria-label="Previous Slide"
@@ -147,9 +147,9 @@ function Hero() {
 
       <motion.div
         style={{ opacity }}
-        className="relative mx-auto max-w-7xl px-6 sm:px-12 pt-32 pb-20 w-full z-10"
+        className="relative z-10 mx-auto w-full min-w-0 max-w-7xl px-4 pb-28 pt-28 sm:px-6 sm:pt-32 md:px-12 md:pb-20"
       >
-        <div className="relative w-full max-w-full mx-auto p-6 md:p-12 flex flex-col items-center justify-center text-center">
+        <div className="relative mx-auto flex w-full min-w-0 max-w-full flex-col items-center justify-center p-4 text-center sm:p-6 md:p-12">
           {/* Background Outline Frame */}
           <div className="absolute inset-0 border border-[var(--cream)]/15 -z-10" />
 
@@ -168,16 +168,16 @@ function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-            className="font-cormorant font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-[var(--cream)] tracking-tight mb-0 text-center"
+            className="mb-0 text-center font-cormorant text-[clamp(2.15rem,8vw,5.5rem)] font-bold leading-[1.05] tracking-tight text-balance text-[var(--cream)]"
           >
-            Architects of investor portfolios.
+            Architects of Investor Portfolios.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-serif italic text-[36px] text-[var(--gold)] mt-6 text-center"
+            className="mt-6 text-center font-serif text-[clamp(1.35rem,5vw,2.25rem)] italic text-[var(--gold)]"
           >
             Strategy. Acquisition. Scale.
           </motion.p>
@@ -199,7 +199,7 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.9 }}
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
           >
-            <CTAButton className="!px-8 !py-4 font-bold !tracking-wide hover:!bg-[var(--gold-soft)]" />
+            <CTAButton className="w-full font-bold sm:w-auto hover:!bg-[var(--gold-soft)]" />
           </motion.div>
         </div>
       </motion.div>
@@ -210,7 +210,7 @@ function Hero() {
 function Differentiator() {
   return (
     <section className="py-28 md:py-40 bg-[var(--cream)] text-[var(--navy-deep)]">
-      <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-12 gap-12 md:gap-16 items-center">
+      <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 grid lg:grid-cols-12 gap-12 md:gap-16 items-center">
         {/* Left Side: Modern Sketch Blueprint & House Image */}
         <Reveal className="lg:col-span-5 relative group">
           <div className="relative w-full">
@@ -231,7 +231,7 @@ function Differentiator() {
             <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--navy)] font-medium opacity-70">
               The Differentiator
             </p>
-            <h2 className="font-serif text-[36px] leading-[1.2] mt-6 text-[var(--navy-deep)] tracking-tight">
+            <h2 className="mt-6 font-serif text-[clamp(1.75rem,5vw,2.25rem)] leading-[1.2] tracking-tight text-balance text-[var(--navy-deep)]">
               <span className="block">Most buyers agents find you a property.</span>
               <span className="block text-[var(--gold)] italic mt-3">
                 We build you a portfolio.
@@ -266,11 +266,11 @@ function Blueprint() {
       <div className="absolute inset-0 opacity-20">
         <img src={blueprintImg} alt="" className="w-full h-full object-cover object-center" />
       </div>
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7">
             <Eyebrow>Where every engagement starts</Eyebrow>
-            <h2 className="font-serif text-[36px] leading-[1.05] mt-6 text-[var(--cream)]">
+            <h2 className="mt-6 font-serif text-[clamp(1.75rem,5vw,2.25rem)] leading-[1.05] text-balance text-[var(--cream)]">
               The Elevare Portfolio <span className="italic text-[var(--gold)]">Blueprint.</span>
             </h2>
             <div className="mt-10 space-y-6 text-[var(--cream)]/75 leading-relaxed max-w-2xl text-[14px]">
@@ -376,13 +376,13 @@ function Process() {
       />
       <div className="absolute left-10 bottom-10 w-[200px] h-[200px] rounded-full border border-[var(--gold)]/5 pointer-events-none" />
 
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           {/* Left Column: Sticky Section Headings */}
           <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
             <div>
               <Eyebrow>How we work</Eyebrow>
-              <h2 className="font-serif text-[42px] leading-[1.1] mt-6 text-[var(--cream)] tracking-tight">
+              <h2 className="mt-6 font-serif text-[clamp(1.85rem,5vw,2.625rem)] leading-[1.1] tracking-tight text-balance text-[var(--cream)]">
                 From strategy to <span className="italic text-[var(--gold)]">scale.</span>
               </h2>
               <p className="mt-6 text-sm text-[var(--cream)]/60 leading-relaxed font-light">
@@ -487,7 +487,7 @@ function Process() {
 function Audience() {
   return (
     <section className="py-24 md:py-32 bg-[var(--cream)] text-[var(--navy-deep)] overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Asymmetrical Collage */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4 md:gap-6 relative">
@@ -532,7 +532,7 @@ function Audience() {
                   <p className="text-[10px] tracking-wider uppercase text-[var(--navy-deep)]/80 shrink-0">
                     Call us anytime
                   </p>
-                  <p className="text-sm md:text-md font-serif font-semibold tracking-tight whitespace-nowrap mt-1">
+                  <p className="mt-1 break-all font-serif text-sm font-semibold tracking-tight sm:break-normal md:text-base">
                     +61 4 3470 2850
                   </p>
                 </div>
@@ -577,7 +577,7 @@ function Audience() {
             <Reveal>
               <div className="space-y-4">
                 <Eyebrow>Who we work with</Eyebrow>
-                <h2 className="font-serif text-[38px] md:text-[46px] leading-[1.15] text-[var(--navy-deep)] tracking-tight">
+                <h2 className="font-serif text-[clamp(1.85rem,5vw,2.875rem)] leading-[1.15] tracking-tight text-balance text-[var(--navy-deep)]">
                   Built for investors with <br className="hidden md:inline" />
                   portfolio ambition.
                 </h2>
@@ -670,7 +670,7 @@ function Ecosystem() {
         <div className="absolute inset-0 bg-[#001c3a]/85" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-6 relative z-10">
+      <div className="mx-auto w-full min-w-0 max-w-5xl px-4 sm:px-6 relative z-10">
         <div className="border border-[var(--gold)]/10 bg-[var(--navy-deep)]/40 backdrop-blur rounded-lg overflow-hidden grid lg:grid-cols-12">
           {/* Left Visual Accent Column */}
           <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-[var(--gold)]/10 flex flex-col justify-between bg-[var(--navy-deep)]/[0.6] relative group">
@@ -734,7 +734,7 @@ function Ecosystem() {
 function Founder() {
   return (
     <section id="founder" className="py-28 md:py-40 bg-[var(--navy-deep)]">
-      <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12 items-center">
+      <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 grid md:grid-cols-12 gap-12 items-center">
         <div className="md:col-span-7 md:order-1 md:pr-8">
           <Eyebrow>Founder</Eyebrow>
 
@@ -782,11 +782,11 @@ function Founder() {
 function FooterCTA() {
   return (
     <section id="contact" className="py-10 text-center relative overflow-hidden">
-      <div className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6">
+      <div className="absolute inset-x-0 top-0 mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="gold-rule" />
       </div>
-      <div className="mx-auto max-w-3xl px-6">
-        <h2 className="font-serif text-[48px] leading-[1.05] mt-6 text-[var(--cream)]">
+      <div className="mx-auto w-full min-w-0 max-w-3xl px-4 sm:px-6">
+        <h2 className="mt-6 font-serif text-[clamp(2rem,6vw,3rem)] leading-[1.05] text-balance text-[var(--cream)]">
           Ready to scale your portfolio
           <span className="block italic text-[var(--gold)]">with intent?</span>
         </h2>
