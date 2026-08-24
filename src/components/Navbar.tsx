@@ -56,7 +56,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`pointer-events-auto fixed top-0 inset-x-0 z-[100] transition-all duration-300 ${
+      className={`pointer-events-auto fixed top-0 inset-x-0 z-[10050] transition-all duration-300 ${
         scrolled
           ? "bg-[var(--navy-deep)]/80 backdrop-blur-md border-b border-[var(--gold)]/10"
           : "bg-transparent"
@@ -112,7 +112,7 @@ export function Navbar() {
 
       {menuOpen
         ? createPortal(
-            <div className="fixed inset-0 z-[10040] md:hidden" id="mobile-navigation">
+            <div className="fixed inset-0 z-[10060] md:hidden" id="mobile-navigation">
               <button
                 type="button"
                 className="absolute inset-0 bg-black/70"
