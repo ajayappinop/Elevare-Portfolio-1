@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 /* Layout */
 export const pageShellClass =
-  "bg-[var(--navy)] text-[var(--cream)] min-h-dvh min-w-0 overflow-x-clip pt-24 selection:bg-[var(--gold)]/30 selection:text-[var(--cream)]";
+  "bg-[var(--navy)] text-[var(--cream)] min-h-dvh min-w-0 pt-24 selection:bg-[var(--gold)]/30 selection:text-[var(--cream)]";
 
 export const sectionClass = "py-16 sm:py-24 md:py-32";
 
