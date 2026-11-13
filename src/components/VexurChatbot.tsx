@@ -14,6 +14,136 @@ import {
 
 import { loadVexurScript } from "./vexur-loader";
 
+const CHAT_FRAME_STYLE_ID = "elevare-vexur-chat-fit";
+const CHAT_LAUNCHER_WIDTH = 220;
+const CHAT_LAUNCHER_HEIGHT = 88;
+
+const CHAT_FRAME_FIT_CSS = `
+.vw-chat-button.with-text {
+  width: max-content !important;
+  max-width: calc(100vw - 24px) !important;
+  height: auto !important;
+  min-height: 52px;
+  padding: 10px 16px !important;
+  box-sizing: border-box !important;
+}
+.vw-chat-button-text {
+  white-space: nowrap;
+}
+.vw-chat-window {
+  max-width: calc(100% - 16px) !important;
+  box-sizing: border-box !important;
+}
+.vw-chat-messages,
+.vw-chat-input-wrapper,
+.vw-message {
+  min-width: 0;
+  max-width: 100%;
+}
+.vw-chat-header {
+  max-width: 100%;
+}
+.vw-chat-header-info {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 44px);
+}
+.vw-chat-close {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  pointer-events: auto;
+}
+.vw-chat-name,
+.vw-chat-status {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vw-message-bubble,
+.vw-handoff-notice,
+.vw-lead-form,
+.vw-lead-form-subtitle,
+.vw-quick-reply {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+`;
+
+function findChatFrame(root: ParentNode): HTMLIFrameElement | null {
+  const stack: ParentNode[] = [root];
+
+  while (stack.length > 0) {
+    const current = stack.pop();
+    if (!current) {
+      continue;
+    }
+
+    if (current instanceof HTMLIFrameElement && current.classList.contains("vx-frame")) {
+      return current;
+    }
+
+    if (current instanceof Element && current.shadowRoot) {
+      stack.push(current.shadowRoot);
+    }
+
+    if ("children" in current) {
+      stack.push(...Array.from(current.children));
+    }
+  }
+
+  return null;
+}
+
+function isChatOpen(frame: HTMLIFrameElement) {
+  try {
+    return Boolean(
+      frame.contentDocument
+        ?.querySelector("vexur-chatbot")
+        ?.shadowRoot?.querySelector(".vw-chat-window.open"),
+    );
+  } catch {
+    return false;
+  }
+}
+
+function fitChatFrame(frame: HTMLIFrameElement) {
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const open = isChatOpen(frame);
+  const narrow = viewportWidth < 720;
+  const width = open
+    ? narrow
+      ? viewportWidth
+      : Math.min(440, viewportWidth)
+    : Math.min(CHAT_LAUNCHER_WIDTH, Math.max(160, viewportWidth - 12));
+  const height = open ? (narrow ? viewportHeight : Math.min(viewportHeight, 760)) : CHAT_LAUNCHER_HEIGHT;
+  const nextWidth = `${width}px`;
+  const nextHeight = `${height}px`;
+
+  if (frame.style.width !== nextWidth) {
+    frame.style.width = nextWidth;
+  }
+  if (frame.style.height !== nextHeight) {
+    frame.style.height = nextHeight;
+  }
+  frame.style.maxWidth = "100vw";
+  frame.style.maxHeight = "100dvh";
+
+  try {
+    const shadow = frame.contentDocument?.querySelector("vexur-chatbot")?.shadowRoot;
+    if (shadow && !shadow.getElementById(CHAT_FRAME_STYLE_ID)) {
+      const style = frame.contentDocument!.createElement("style");
+      style.id = CHAT_FRAME_STYLE_ID;
+      style.textContent = CHAT_FRAME_FIT_CSS;
+      shadow.appendChild(style);
+    }
+  } catch {
+    // Cross-origin frame.
+  }
+}
+
 const VEXUR_LAUNCHER_COLOR_PATTERN =
   /(\.vw-chat-button[^{]*\{[^}]*?)color:\s*[^;]+;?/gi;
 const VEXUR_HEADER_COLOR_PATTERN =
@@ -119,6 +249,10 @@ export function VexurChatbot() {
     const syncLayout = () => {
       sanitizeVexurEmbed(widget);
       styleVexurUi(widget);
+      const frame = findChatFrame(widget);
+      if (frame) {
+        fitChatFrame(frame);
+      }
     };
 
     const sanitizeSoon = () => {
@@ -144,6 +278,16 @@ export function VexurChatbot() {
 
     onUpdate();
 
+    const onChatLayout = (event: MessageEvent) => {
+      if (event.data?.type !== "vexur:chatbot-layout") {
+        return;
+      }
+      requestAnimationFrame(syncLayout);
+    };
+
+    window.addEventListener("message", onChatLayout);
+    window.addEventListener("resize", syncLayout);
+
     const mutationObserver = new MutationObserver(onUpdate);
     mutationObserver.observe(widget, {
       childList: true,
@@ -153,6 +297,8 @@ export function VexurChatbot() {
     });
 
     return () => {
+      window.removeEventListener("message", onChatLayout);
+      window.removeEventListener("resize", syncLayout);
       mutationObserver.disconnect();
       for (const observer of shadowObservers) {
         observer.disconnect();
