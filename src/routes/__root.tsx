@@ -1,8 +1,15 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, Link, createRootRouteWithContext, useRouter } from "@tanstack/react-router";
+import { Outlet, Link, createRootRouteWithContext, useRouter, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { VexurChatbot } from "@/components/VexurChatbot";
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 function NotFoundComponent() {
   return (
@@ -67,11 +74,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+function MetaPageViews() {
+  const href = useRouterState({ select: (state) => state.location.href });
+  const skipInitial = useRef(true);
+
+  useEffect(() => {
+    if (skipInitial.current) {
+      skipInitial.current = false;
+      return;
+    }
+
+    window.fbq?.("track", "PageView");
+  }, [href]);
+
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <MetaPageViews />
       <div className="flex min-h-dvh min-w-0 flex-col bg-[var(--navy)]">
         <Outlet />
         <SiteFooter />
